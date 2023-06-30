@@ -16,39 +16,35 @@ import EditStudent from "../pages/EditStudent";
 function App() {
   return (
     <div>
-     <AllCampuses />
-
-    {/* <Router>
+    <Router>
         <div className="App">
-           Navigation 
-          <nav className="navbar navbar-light" style={{ backgroundColor: "#e3f2fd", paddingLeft: "15%" }}>
-            <Link to="/" style={{ marginRight: '10px' }}>Home</Link>
-            <Link to="/campuses" style={{ marginRight: '10px' }}>Campuses</Link>
-            <Link to="/campuses/show" style={{ marginRight: '10px' }}>show Campuses</Link>
-            <Link to="/campuses/add" style={{ marginRight: '10px' }}>add campus</Link>
-            <Link to="/campuses/edit" style={{ marginRight: '10px' }}>edit campus</Link>
+          <nav className="navbar navbar-light" style={{ backgroundColor: "#e3f2fd" }}>
+            <Link to="/" >Home</Link> 
+            <Link to="/campuses" >Campuses</Link>
+            <Link to="/campuses/show" >show Campuses</Link>
+            <Link to="/campuses/add">add campus</Link>
+            <Link to="/campuses/edit">edit campus</Link>
             
-            <Link to="/students" style={{ marginRight: '10px' }}>Students</Link>
-            <Link to="/campuses/show" style={{ marginRight: '10px' }}>Show Students</Link>           
-            <Link to="/students/add" style={{ marginRight: '10px' }}>Add Students</Link>           
-            <Link to="/students/edit" style={{ marginRight: '10px' }}>Edit Students</Link> 
+            <Link to="/students" >Students</Link>
+            <Link to="/campuses/show" >Show Students</Link>           
+            <Link to="/students/add" >Add Students</Link>           
+            <Link to="/students/edit" >Edit Students</Link> 
             
           </nav>
         </div>
       <Routes>
-        <Route> path="/" element={<Home />} </Route>
+        <Route path="/" element={<Home />} />
+        <Route path="/campuses" element={<AllCampuses />} />
+        <Route path="/campuses/show" element={<ShowCampus />} />
+        <Route path="/campuses/add" element={<AddCampus />} />
+        <Route path="/campuses/edit" element={<EditCampus />} />
 
-        <Route> path="/campuses" element={<AllCampuses />} </Route>
-        <Route> path="/campuses/show" element={<ShowCampus />} </Route>
-        <Route> path="/campuses/add" element={<AddCampus />} </Route>
-        <Route> path="/campuses/edit" element={<EditCampus />} </Route>
-
-        <Route> path="/students" element={<AllStudents />} </Route>
-        <Route> path="/students/show" element={<ShowStudent />} </Route>
-        <Route> path="/students/add" element={<AddStudent />} </Route>
-        <Route> path="/students/edit" element={<EditStudent />} </Route>
+        <Route path="/students" element={<AllStudents />} />
+        <Route path="/students/show" element={<ShowStudent />} />
+        <Route path="/students/add" element={<AddStudent />} />
+        <Route path="/students/edit" element={<EditStudent />} />
       </Routes>
-    </Router>  */}
+    </Router> 
     </div>
   );
 }

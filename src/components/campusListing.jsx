@@ -8,10 +8,7 @@ const ListCampuses = (props) => {
             console.log(campusCard)
             return(
                 <div>
-                  <h1>gelo</h1>
-                  <h2>{campusCard.name}</h2>
                     <CampusCard campusCard={campusCard} />
-
                 </div>
             );
         })

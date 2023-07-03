@@ -1,20 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { updateStudentThunk, fetchAllStudentsThunk } from '../redux/student/student.actions';
 import StudentForm from '../components/studentForm';
 
-const EditStudent = () => {
+const EditStudent = ({ student }) => {
+    console.log(student.id);
     const dispatch = useDispatch();
-
-    // Get student id from link
-    const { id } = useParams();
-    // Use id to find student
-    const students = useSelector((state) => state.students);
-    const student = students.find((student) => student.id === parseInt(id));
-
     // State for all variables of a student
     const [initialFormValues, setInitialFormValues] = useState({
+        id: '',
         firstName: '',
         lastName: '',
         email: '',
@@ -27,13 +21,13 @@ const EditStudent = () => {
     useEffect(() => {
         dispatch(fetchAllStudentsThunk());
         setInitialFormValues({
-            firstName: student.firstName,
+            firstName: student.firstName ,
             lastName: student.lastName,
-            email: student.email,
+            email: student.email ,
             imageUrl: student.imageUrl,
-            gpa: student.gpa,
+            gpa: student.gpa ,
             campusId: student.campusId,
-            });
+        });
     }, []);
 
     // Submit form and update data
@@ -44,7 +38,7 @@ const EditStudent = () => {
     return (
         <div>
             <h2>Edit Student Page</h2>
-                <StudentForm initialValues={initialFormValues} onSubmit={handleFormSubmit} />
+            <StudentForm initialValues={initialFormValues} onSubmit={handleFormSubmit} />
         </div>
     );
 };

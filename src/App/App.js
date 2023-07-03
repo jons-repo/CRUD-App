@@ -12,7 +12,6 @@ import AllStudents from "../pages/AllStudents";
 import ShowStudent from "../pages/ShowStudent";
 import AddStudent from "../pages/AddStudent";
 import EditStudent from "../pages/EditStudent";
-import StudentCard from './components/StudentCard';
 
 function App() {
   return (
@@ -37,6 +36,7 @@ function App() {
             <Route path="/campuses/add" element={<AddCampus />} />
             <Route path="/campuses/edit" element={<EditCampus />} />
             <Route path="/students" element={<AllStudents />} />
+            <Route path="/students/show" element={<ShowStudent />} />
             <Route path="/students/add" element={<AddStudent />} />
           </Routes>
         </div>

@@ -1,8 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
+import EditStudent from '../pages/EditStudent';
 
 const StudentCard = ({ studentCard }) => {
   const campusName = studentCard.campus ? studentCard.campus.name : 'none';
+
+  const navigate = useNavigate();
+
+  const handleEditClick = () => {
+    navigate(`/edit-student/${studentCard.id}`);
+  };
 
   return (
     <div>
@@ -18,10 +25,14 @@ const StudentCard = ({ studentCard }) => {
           </h5>
           <p className="card-text">Campus: {campusName}</p>
         </div>
+        <Routes>
+          <Route path={`/edit-student/${studentCard.id}`} element={<EditStudent student={studentCard} />} />
+        </Routes>
+        
         <div className="card-body">
-          <Link to={`/edit-student/${studentCard.id}`} className="card-link">
+          <button onClick={() => handleEditClick(studentCard.id)} className="card-link">
             Edit
-          </Link>
+          </button>
           <a href="#" className="card-link">
             Delete
           </a>

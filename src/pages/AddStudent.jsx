@@ -6,7 +6,7 @@ import StudentForm from "../components/studentForm";
 const AddStudent = () => {
     const dispatch = useDispatch();
     const handleFormSubmit = (studentData) => {
-        dispatch(addStudentThunk());
+        dispatch(addStudentThunk(studentData));
     };
 
     return (

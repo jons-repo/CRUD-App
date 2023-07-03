@@ -9,6 +9,7 @@ const StudentForm = ({ onSubmit }) => {
 
     const handleFirstNameChange = (event) => {
         setFirstName(event.target.value);
+        console.log(firstName);
     };
 
     const handleLastNameChange = (event) => {
@@ -42,7 +43,7 @@ const StudentForm = ({ onSubmit }) => {
             gpa,
             campusId
         };
-
+        console.log(studentData);
         onSubmit(studentData);
 
         setFirstName("");
@@ -59,6 +60,27 @@ const StudentForm = ({ onSubmit }) => {
                 <label htmlFor="firstName">First Name: </label>
                 <input type = "text" id= "firstName" value={firstName} onChange={handleFirstNameChange}/>
             </div>
+            <div>
+                <label htmlFor="lastName">Last Name: </label>
+                <input type = "text" id= "lastName" value={lastName} onChange={handleLastNameChange}/>   
+            </div>
+            <div>
+                <label htmlFor="email">Email: </label>
+                <input type="text" id = "email" value={email} onChange={handleEmailChange}/>
+            </div>
+            <div>
+                <label htmlFor="imageUrl">Image Url: </label>
+                <input type="text" id="imageUrl" value={imageUrl} onChange={handleImageUrlChange}/>
+            </div>
+            <div>
+                <label htmlFor="gpa">GPA: </label>
+                <input type="number" step = "0.1" id="gpa" value={gpa} onChange={handleGpaChange}/>
+            </div>
+            <div>
+                <label htmlFor="campus id">Campus ID: </label>
+                <input type="number" id="campuId" value={campusId} onChange={handleCampusIdChange} />
+            </div>
+
             <button type="submit">Submit</button>
         </form>
     );

@@ -1,18 +1,35 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { addStudentThunk } from "../redux/student/student.actions";
 import StudentForm from "../components/studentForm";
 
-const EditStudent = () => {
+const EditStudent = (id) => {
 
-    
+    const dispatch = useDispatch();
+
+    const student = useSelector((state) =>
+        state.students.find((student) => student.id)
+    );
+
+
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
     const [imageUrl, setImageUrl] = useState("");
     const [gpa, setGpa] = useState(0.0);
     const [campusId, setCampusId] = useState(0);
+
+    useEffect(() => {
+        if (student) {
+            setFirstName(student.firstName);
+            setLastName(student.lastName);
+            setEmail(student.email);
+            setImageUrl(student.imageUrl);
+            setGpa(student.gpa);
+            setCampusId(student.campusId);
+        }
+    }, [student]);
 
     const handleFormSubmit = (event) => {
         event.preventDefault();

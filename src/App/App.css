@@ -1,1 +1,18 @@
-
+h1 {
+    text-align: center;
+  }
+  
+  .banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    /* height: 100vh;  */
+  }
+  
+  /* img {
+    display: block;
+    max-width: 20%;
+    max-height: 20%;
+  } */
+  

@@ -1,11 +1,20 @@
 import React, { useState } from "react";
-const StudentForm = ({ handleFormSubmit }) => {
+const StudentForm = ({ handleFormSubmit, initialValues }) => {
+
+
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
     const [imageUrl, setImageUrl] = useState("");
     const [gpa, setGpa] = useState(0.0);
     const [campusId, setCampusID] = useState(0);
+
+    // Show default values in inputs
+    // console.log(initialValues);
+    // if (initialValues) {
+    //     setFirstName(initialValues.firstName);
+    //     setLastName(initialValues.lastName);
+    // }
 
     const handleFirstNameChange = (event) => {
         setFirstName(event.target.value);
@@ -31,7 +40,7 @@ const StudentForm = ({ handleFormSubmit }) => {
     const handleCampusIdChange = (event) => {
         setCampusID(event.target.value);
     };
-    
+
     const handleSubmitChange = (event) => {
         event.preventDefault();
 
@@ -58,23 +67,23 @@ const StudentForm = ({ handleFormSubmit }) => {
         <form onSubmit={handleSubmitChange}>
             <div>
                 <label htmlFor="firstName">First Name: </label>
-                <input type = "text" id= "firstName" value={firstName} onChange={handleFirstNameChange}/>
+                <input type="text" id="firstName" value={firstName} onChange={handleFirstNameChange} />
             </div>
             <div>
                 <label htmlFor="lastName">Last Name: </label>
-                <input type = "text" id= "lastName" value={lastName} onChange={handleLastNameChange}/>   
+                <input type="text" id="lastName" value={lastName} onChange={handleLastNameChange} />
             </div>
             <div>
                 <label htmlFor="email">Email: </label>
-                <input type="text" id = "email" value={email} onChange={handleEmailChange}/>
+                <input type="text" id="email" value={email} onChange={handleEmailChange} />
             </div>
             <div>
                 <label htmlFor="imageUrl">Image Url: </label>
-                <input type="text" id="imageUrl" value={imageUrl} onChange={handleImageUrlChange}/>
+                <input type="text" id="imageUrl" value={imageUrl} onChange={handleImageUrlChange} />
             </div>
             <div>
                 <label htmlFor="gpa">GPA: </label>
-                <input type="number" step = "0.1" id="gpa" value={gpa} onChange={handleGpaChange}/>
+                <input type="number" step="0.1" id="gpa" value={gpa} onChange={handleGpaChange} />
             </div>
             <div>
                 <label htmlFor="campus id">Campus ID: </label>

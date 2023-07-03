@@ -37,3 +37,25 @@ export const fetchAllStudentsThunk = () => {
         }
     };
 };
+
+export const updateStudent = (payload) => {
+    return {
+        type: StudentActionType.UPDATE_STUDENT,
+        payload: payload,
+    };
+};
+
+export const updateStudentThunk = (updatedStudentData) => {
+    return async (dispatch) => {
+        try {
+            await axios.put(
+                `http://localhost:8000/api/students/${updatedStudentData.id}`,
+                updatedStudentData
+            );
+            dispatch(updateStudent(updatedStudentData));
+        } catch (error) {
+            console.error(error);
+        }
+    };
+};
+

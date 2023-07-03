@@ -5,16 +5,10 @@ import { addStudentThunk } from "../redux/student/student.actions";
 import StudentForm from "../components/studentForm";
 
 const EditStudent = () => {
-
     const dispatch = useDispatch();
-
     const { id } = useParams();
     const students = useSelector((state) => state.students);
     const student = students.find((student) => student.id === parseInt(id));
-
-    console.log("id:", id);
-    console.log("students:", students);
-    console.log("student:", student);
 
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
@@ -52,18 +46,17 @@ const EditStudent = () => {
 
     return (
         <div>
-        <h2>Edit Student Page</h2>
-        <StudentForm 
-            firstName={firstName}
-            lastName={lastName}
-            email={email}
-            imageUrl={imageUrl}
-            gpa={gpa}
-            campusId={campusId}
-            onSubmit={handleFormSubmit} /> 
+            <h2>Edit Student Page</h2>
+            <StudentForm
+                firstName={firstName}
+                lastName={lastName}
+                email={email}
+                imageUrl={imageUrl}
+                gpa={gpa}
+                campusId={campusId}
+                onFormSubmit={handleFormSubmit}
+            />
         </div>
-
-
     );
 };
 

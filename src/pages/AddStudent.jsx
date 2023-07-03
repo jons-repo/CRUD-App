@@ -12,7 +12,7 @@ const AddStudent = () => {
     return (
         <div>
             <h2>Add Student page</h2>
-            <StudentForm onSubmit={handleFormSubmit}/>
+            <StudentForm handleFormSubmit={handleFormSubmit}/>
         </div>
     );
 };

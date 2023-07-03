@@ -25,9 +25,9 @@ const StudentCard = ({ studentCard }) => {
           </h5>
           <p className="card-text">Campus: {campusName}</p>
         </div>
-        <Routes>
+        {/* <Routes>
           <Route path={`/edit-student/${studentCard.id}`} element={<EditStudent student={studentCard} />} />
-        </Routes>
+        </Routes> */}
         
         <div className="card-body">
           <button onClick={() => handleEditClick(studentCard.id)} className="card-link">

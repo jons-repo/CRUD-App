@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-const StudentForm = ({ onSubmit }) => {
+const StudentForm = ({ handleFormSubmit }) => {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
@@ -44,7 +44,7 @@ const StudentForm = ({ onSubmit }) => {
             campusId
         };
         console.log(studentData);
-        onSubmit(studentData);
+        handleFormSubmit(studentData);
 
         setFirstName("");
         setLastName("");

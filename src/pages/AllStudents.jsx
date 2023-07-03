@@ -18,6 +18,7 @@ const AllStudents = () => {
         <div>
             <h1>Students</h1>
             <ListStudents list = {allStudents}/>
+            
         </div>
     );
 };

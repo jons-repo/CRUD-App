@@ -5,7 +5,7 @@ const CampusCard = ({campusCard}) => {
     return(
       <div>
 
-        <div className="card" style={{ width: "18rem" }}>
+        <div className="card" style={{ width: "25rem" }}>
           <img src="https://img.freepik.com/free-vector/college-building-educational-institution-banner_1441-3616.jpg?size=626&ext=jpg" className="card-img-top" alt="..." />
           <div className="card-body">
             <h5 className="card-title">{campusCard.name}</h5>
@@ -16,7 +16,6 @@ const CampusCard = ({campusCard}) => {
             <a href="#" className="card-link">Delete</a>
           </div>
         </div>
-
       </div>
     );
 

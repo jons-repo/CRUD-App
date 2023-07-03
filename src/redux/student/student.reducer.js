@@ -8,6 +8,9 @@ const studentReducer = (state = INITIAL_STUDENT_STATE, { type, payload }) => {
         case StudentActionType.FETCH_ALL_STUDENTS:
             return {...state, allStudents: payload };
         
+        case StudentActionType.ADD_STUDENT:
+            return {...state, allStudents: [...state.allStudents, payload]} // adding the new added student data to existing students list
+        
         default:
             return state;
     }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 const StudentForm = ({ handleFormSubmit, initialValues }) => {
 
 
@@ -9,12 +9,17 @@ const StudentForm = ({ handleFormSubmit, initialValues }) => {
     const [gpa, setGpa] = useState(0.0);
     const [campusId, setCampusID] = useState(0);
 
-    // Show default values in inputs
-    // console.log(initialValues);
-    // if (initialValues) {
-    //     setFirstName(initialValues.firstName);
-    //     setLastName(initialValues.lastName);
-    // }
+    // Set initial form values
+    useEffect(() => {
+        if (initialValues) {
+            setFirstName(initialValues.firstName);
+            setLastName(initialValues.lastName);
+            setEmail(initialValues.email);
+            setImageUrl(initialValues.imageUrl);
+            setGpa(initialValues.gpa);
+            setCampusID(initialValues.campusId);
+        }
+    }, [initialValues]);
 
     const handleFirstNameChange = (event) => {
         setFirstName(event.target.value);

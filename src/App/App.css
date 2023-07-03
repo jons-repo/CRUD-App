@@ -21,4 +21,10 @@
   
   .cards {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+  }
+  .card-padding{
+    padding: 10px; 
   }

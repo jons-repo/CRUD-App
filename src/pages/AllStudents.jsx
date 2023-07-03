@@ -16,8 +16,10 @@ const AllStudents = () => {
 
     return (
         <div>
-            <h1>Students</h1>
+            <h1 class="centered">Students</h1>
+            <div class="cards">
             <ListStudents list = {allStudents}/>
+            </div>
             
         </div>
     );

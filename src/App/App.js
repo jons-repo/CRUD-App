@@ -42,7 +42,6 @@ function App() {
         <Route path="/students" element={<AllStudents />} />
         <Route path="/students/show" element={<ShowStudent />} />
         <Route path="/students/add" element={<AddStudent />} />
-        <Route path="/students/edit" element={<EditStudent />} />
       </Routes>
     </Router> 
     </div>

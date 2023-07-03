@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 const StudentCard = ({studentCard}) => {
     console.log(studentCard);
@@ -13,7 +14,9 @@ const StudentCard = ({studentCard}) => {
             <p className="card-text">Campus: {campusName}</p>
           </div>
           <div className="card-body">
-            <a href="#" className="card-link">Edit</a>
+            <Link to={`/edit-student/${studentCard.id}`} className="card-link">
+              Edit
+            </Link>
             <a href="#" className="card-link">Delete</a>
           </div>
         </div>

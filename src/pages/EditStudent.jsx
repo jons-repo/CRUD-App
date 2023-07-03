@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { addStudentThunk } from "../redux/student/student.actions";
@@ -9,8 +9,9 @@ const EditStudent = (id) => {
     const dispatch = useDispatch();
 
     const student = useSelector((state) =>
-        state.students.find((student) => student.id)
+        state.students && state.students.find((student) => student.id === parseInt(id))
     );
+
 
 
     const [firstName, setFirstName] = useState("");
@@ -33,6 +34,18 @@ const EditStudent = (id) => {
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
+
+        const updatedStudentData = {
+            id: student.id,
+            firstName,
+            lastName,
+            email,
+            imageUrl,
+            gpa,
+            campusId,
+        };
+
+        dispatch(addStudentThunk(updatedStudentData));
     };
 
     return (

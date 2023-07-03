@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-const StudentForm = ({ onSubmit }) => {
+const StudentForm = ({ allCampuses, onSubmit }) => {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
@@ -77,8 +77,13 @@ const StudentForm = ({ onSubmit }) => {
                 <input type="number" step = "0.1" id="gpa" value={gpa} onChange={handleGpaChange}/>
             </div>
             <div>
-                <label htmlFor="campus id">Campus ID: </label>
-                <input type="number" id="campuId" value={campusId} onChange={handleCampusIdChange} />
+                <label htmlFor="campus id">Campus : </label>
+                <select id="campusId" value={campusId} onChange={handleCampusIdChange}>
+                    <option value = "">Select Campus</option>
+                    {allCampuses 
+                    ? allCampuses.map((campus) => {return(<option key={campus.id} value={campus.id}>{campus.name}</option>)})
+                    : "error getting data"}
+                </select>
             </div>
 
             <button type="submit">Submit</button>

@@ -6,6 +6,14 @@ const StudentForm = ({ allCampuses, onSubmit }) => {
     const [imageUrl, setImageUrl] = useState("");
     const [gpa, setGpa] = useState(0.0);
     const [campusId, setCampusID] = useState(0);
+    const [emailError, setEmailError] = useState('');
+
+    //validate Email
+    const validateEmail = (input) => {
+        //check here for regex format > https://mailtrap.io/blog/validate-emails-in-react/
+        const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+        return emailRegex.test(input);
+    }
 
     const handleFirstNameChange = (event) => {
         setFirstName(event.target.value);
@@ -35,6 +43,11 @@ const StudentForm = ({ allCampuses, onSubmit }) => {
     const handleSubmitChange = (event) => {
         event.preventDefault();
 
+        if(!validateEmail(email)){
+            setEmailError("Please enter a valid email address.");
+            return;
+        }
+
         const studentData = {
             firstName,
             lastName,
@@ -52,6 +65,7 @@ const StudentForm = ({ allCampuses, onSubmit }) => {
         setImageUrl("");
         setGpa(0.0);
         setCampusID(0);
+        setEmailError("");
     };
 
     return (
@@ -66,7 +80,8 @@ const StudentForm = ({ allCampuses, onSubmit }) => {
             </div>
             <div>
                 <label htmlFor="email">Email: </label>
-                <input type="text" id = "email" value={email} onChange={handleEmailChange}/>
+                <input type="text" id = "email" value={email} onChange={handleEmailChange}/> {emailError}
+                
             </div>
             <div>
                 <label htmlFor="imageUrl">Image Url: </label>
@@ -83,7 +98,7 @@ const StudentForm = ({ allCampuses, onSubmit }) => {
                     {allCampuses 
                     ? allCampuses.map((campus) => {return(<option key={campus.id} value={campus.id}>{campus.name}</option>)})
                     : "error getting data"}
-                </select>
+                </select> 
             </div>
 
             <button type="submit">Submit</button>

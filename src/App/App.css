@@ -28,3 +28,20 @@
   .card-padding{
     padding: 10px; 
   }
+  .navbar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: capitalize;
+    background-color: black;
+    text-align: center;
+    text-decoration:aqua;
+  }
+
+  .navbar > * + * {
+    font-size:large;
+    text-align: center;
+    padding-left:2rem; 
+    padding-right: 2rem;
+  }
+  

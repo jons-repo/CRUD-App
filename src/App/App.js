@@ -12,6 +12,7 @@ import AllStudents from "../pages/AllStudents";
 import ShowStudent from "../pages/ShowStudent";
 import AddStudent from "../pages/AddStudent";
 import EditStudent from "../pages/EditStudent";
+import StudentCard from './components/StudentCard';
 
 function App() {
   return (

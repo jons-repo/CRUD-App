@@ -1,11 +1,19 @@
 import React, { useState } from "react";
-const StudentForm = ({ onSubmit }) => {
+const StudentForm = ({ allCampuses, onSubmit }) => {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
     const [imageUrl, setImageUrl] = useState("");
     const [gpa, setGpa] = useState(0.0);
     const [campusId, setCampusID] = useState(0);
+    const [emailError, setEmailError] = useState('');
+
+    //validate Email
+    const validateEmail = (input) => {
+        //check here for regex format > https://mailtrap.io/blog/validate-emails-in-react/
+        const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+        return emailRegex.test(input);
+    }
 
     const handleFirstNameChange = (event) => {
         setFirstName(event.target.value);
@@ -35,6 +43,11 @@ const StudentForm = ({ onSubmit }) => {
     const handleSubmitChange = (event) => {
         event.preventDefault();
 
+        if(!validateEmail(email)){
+            setEmailError("Please enter a valid email address.");
+            return;
+        }
+
         const studentData = {
             firstName,
             lastName,
@@ -52,6 +65,7 @@ const StudentForm = ({ onSubmit }) => {
         setImageUrl("");
         setGpa(0.0);
         setCampusID(0);
+        setEmailError("");
     };
 
     return (
@@ -66,7 +80,8 @@ const StudentForm = ({ onSubmit }) => {
             </div>
             <div>
                 <label htmlFor="email">Email: </label>
-                <input type="text" id = "email" value={email} onChange={handleEmailChange}/>
+                <input type="text" id = "email" value={email} onChange={handleEmailChange}/> {emailError}
+                
             </div>
             <div>
                 <label htmlFor="imageUrl">Image Url: </label>
@@ -77,8 +92,13 @@ const StudentForm = ({ onSubmit }) => {
                 <input type="number" step = "0.1" id="gpa" value={gpa} onChange={handleGpaChange}/>
             </div>
             <div>
-                <label htmlFor="campus id">Campus ID: </label>
-                <input type="number" id="campuId" value={campusId} onChange={handleCampusIdChange} />
+                <label htmlFor="campus id">Campus : </label>
+                <select id="campusId" value={campusId} onChange={handleCampusIdChange}>
+                    <option value = "">Select Campus</option>
+                    {allCampuses 
+                    ? allCampuses.map((campus) => {return(<option key={campus.id} value={campus.id}>{campus.name}</option>)})
+                    : "error getting data"}
+                </select> 
             </div>
 
             <button type="submit">Submit</button>

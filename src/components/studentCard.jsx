@@ -1,5 +1,6 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import EditStudent from "../pages/EditStudent"; 
 
 const StudentCard = ({studentCard}) => {
     console.log(studentCard);
@@ -14,6 +15,9 @@ const StudentCard = ({studentCard}) => {
             <p className="card-text">Campus: {campusName}</p>
           </div>
           <div className="card-body">
+            <Routes>
+              <Route path="/edit-student/:id" element={<EditStudent />} />
+            </Routes>
             <Link to={`/edit-student/${studentCard.id}`} className="card-link">
               Edit
             </Link>

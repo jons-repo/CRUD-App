@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import { fetchAllStudentsThunk } from '../redux/student/student.actions';
 import ListStudents from '../components/studentListing';
 
-const Students = () => {
+const AllStudents = () => {
     const allStudents = useSelector((state) => state.student.allStudents);
     const dispatch = useDispatch();
     const fetchAllStudents = () => {
@@ -21,4 +21,4 @@ const Students = () => {
         </div>
     );
 };
-export default Students;
+export default AllStudents;

@@ -20,6 +20,7 @@ const AddStudent = () => {
     };
 
     return (
+        //tested allCampuses flow
         <div>
             <h2>Add Student page</h2>
             <StudentForm allCampuses={allCampuses} onSubmit={handleFormSubmit}/>

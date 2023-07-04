@@ -37,3 +37,43 @@ export const fetchAllStudentsThunk = () => {
         }
     };
 };
+
+export const updateStudent = (payload) => {
+    return {
+        type: StudentActionType.UPDATE_STUDENT,
+        payload: payload,
+    };
+};
+
+export const updateStudentThunk = (updatedStudentData) => {
+    return async (dispatch) => {
+        try {
+            await axios.put(
+                `http://localhost:8000/api/students/${updatedStudentData.id}`,
+                updatedStudentData
+            );
+            dispatch(updateStudent(updatedStudentData));
+        } catch (error) {
+            console.error(error);
+        }
+    };
+};
+
+
+export const deleteStudent = (payload) => {
+    return {
+        type: StudentActionType.DELETE_STUDENT,
+        payload: payload,
+    };
+};
+
+export const deleteStudentThunk = (studentId) => {
+    return async (dispatch) => {
+        try {
+            await axios.delete(`http://localhost:8000/api/students/${studentId}`);
+            dispatch(deleteStudent(studentId));
+        } catch (error) {
+            console.error(error);
+        }
+    };
+};

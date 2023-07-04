@@ -1,14 +1,20 @@
 import React from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
-import EditStudent from '../pages/EditStudent';
+import {useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { deleteStudentThunk } from '../redux/student/student.actions';
 
 const StudentCard = ({ studentCard }) => {
   const campusName = studentCard.campus ? studentCard.campus.name : 'none';
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleEditClick = () => {
     navigate(`/edit-student/${studentCard.id}`);
+  };
+
+  const handleDeleteClick = () => {
+    dispatch(deleteStudentThunk(studentCard.id));
   };
 
   return (
@@ -25,17 +31,14 @@ const StudentCard = ({ studentCard }) => {
           </h5>
           <p className="card-text">Campus: {campusName}</p>
         </div>
-        <Routes>
-          <Route path={`/edit-student/${studentCard.id}`} element={<EditStudent student={studentCard} />} />
-        </Routes>
         
         <div className="card-body">
           <button onClick={() => handleEditClick(studentCard.id)} className="card-link">
             Edit
           </button>
-          <a href="#" className="card-link">
+          <button onClick={() => handleDeleteClick(studentCard.id)} className="card-link">
             Delete
-          </a>
+          </button>
         </div>
       </div>
     </div>

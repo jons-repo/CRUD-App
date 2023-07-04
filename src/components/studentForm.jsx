@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-const StudentForm = ({ allCampuses, onSubmit }) => {
+const StudentForm = ({ handleFormSubmit, initialValues, allCampuses }) => {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
@@ -14,6 +14,30 @@ const StudentForm = ({ allCampuses, onSubmit }) => {
         const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
         return emailRegex.test(input);
     }
+
+    // Set initial form values
+    useEffect(() => {
+        if (initialValues) {
+            setFirstName(initialValues.firstName);
+            setLastName(initialValues.lastName);
+            setEmail(initialValues.email);
+            setImageUrl(initialValues.imageUrl);
+            setGpa(initialValues.gpa);
+            setCampusID(initialValues.campusId);
+        }
+    }, [initialValues]);
+
+    // Set initial form values
+    useEffect(() => {
+        if (initialValues) {
+            setFirstName(initialValues.firstName);
+            setLastName(initialValues.lastName);
+            setEmail(initialValues.email);
+            setImageUrl(initialValues.imageUrl);
+            setGpa(initialValues.gpa);
+            setCampusID(initialValues.campusId);
+        }
+    }, [initialValues]);
 
     const handleFirstNameChange = (event) => {
         setFirstName(event.target.value);
@@ -39,7 +63,7 @@ const StudentForm = ({ allCampuses, onSubmit }) => {
     const handleCampusIdChange = (event) => {
         setCampusID(event.target.value);
     };
-    
+
     const handleSubmitChange = (event) => {
         event.preventDefault();
 
@@ -57,7 +81,7 @@ const StudentForm = ({ allCampuses, onSubmit }) => {
             campusId
         };
         console.log(studentData);
-        onSubmit(studentData);
+        handleFormSubmit(studentData);
 
         setFirstName("");
         setLastName("");
@@ -72,24 +96,24 @@ const StudentForm = ({ allCampuses, onSubmit }) => {
         <form onSubmit={handleSubmitChange}>
             <div>
                 <label htmlFor="firstName">First Name: </label>
-                <input type = "text" id= "firstName" value={firstName} onChange={handleFirstNameChange}/>
+                <input type="text" id="firstName" value={firstName} onChange={handleFirstNameChange} />
             </div>
             <div>
                 <label htmlFor="lastName">Last Name: </label>
-                <input type = "text" id= "lastName" value={lastName} onChange={handleLastNameChange}/>   
+                <input type="text" id="lastName" value={lastName} onChange={handleLastNameChange} />
             </div>
             <div>
                 <label htmlFor="email">Email: </label>
-                <input type="text" id = "email" value={email} onChange={handleEmailChange}/> {emailError}
+                <input type="text" id="email" value={email} onChange={handleEmailChange} /> {emailError}
                 
             </div>
             <div>
                 <label htmlFor="imageUrl">Image Url: </label>
-                <input type="text" id="imageUrl" value={imageUrl} onChange={handleImageUrlChange}/>
+                <input type="text" id="imageUrl" value={imageUrl} onChange={handleImageUrlChange} />
             </div>
             <div>
                 <label htmlFor="gpa">GPA: </label>
-                <input type="number" step = "0.1" id="gpa" value={gpa} onChange={handleGpaChange}/>
+                <input type="number" step="0.1" id="gpa" value={gpa} onChange={handleGpaChange} />
             </div>
             <div>
                 <label htmlFor="campus id">Campus : </label>

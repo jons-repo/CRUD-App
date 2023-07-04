@@ -23,7 +23,7 @@ const AddStudent = () => {
         //tested allCampuses flow
         <div>
             <h2>Add Student page</h2>
-            <StudentForm allCampuses={allCampuses} onSubmit={handleFormSubmit}/>
+            <StudentForm allCampuses={allCampuses} handleFormSubmit={handleFormSubmit}/>
         </div>
     );
 };

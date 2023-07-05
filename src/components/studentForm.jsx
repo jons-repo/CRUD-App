@@ -1,6 +1,12 @@
 import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-const StudentForm = ({ handleFormSubmit, initialValues, allCampuses }) => {
+import { fetchAllCampusesThunk } from "../redux/campus/campus.actions";
+const StudentForm = ({ handleFormSubmit, initialValues}) => {
+    const allCampuses = useSelector((state) => state.campus.allCampuses);
+    const dispatch = useDispatch();
+
+    //Initialize useStates
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
@@ -16,17 +22,12 @@ const StudentForm = ({ handleFormSubmit, initialValues, allCampuses }) => {
         return emailRegex.test(input);
     }
 
-    // Set initial form values
+    const fetchAllCampuses = () => {
+        return dispatch(fetchAllCampusesThunk());
+    }
     useEffect(() => {
-        if (initialValues) {
-            setFirstName(initialValues.firstName);
-            setLastName(initialValues.lastName);
-            setEmail(initialValues.email);
-            setImageUrl(initialValues.imageUrl);
-            setGpa(initialValues.gpa);
-            setCampusID(initialValues.campusId);
-        }
-    }, [initialValues]);
+        fetchAllCampuses();
+    }, [])
 
     // Set initial form values
     useEffect(() => {

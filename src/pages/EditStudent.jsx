@@ -7,6 +7,7 @@ import StudentForm from '../components/studentForm';
 const EditStudent = () => {
     const {studentId} = useParams();
     const allStudents = useSelector((state) => state.student.allStudents);
+    //const allCampuses = useSelector((state) => state.campus.allCampuses);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     
@@ -37,6 +38,8 @@ const EditStudent = () => {
             });
         }
     }, [allStudents, studentId]);
+
+    
 
     const handleFormSubmit = (updatedStudentData) => {
 

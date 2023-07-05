@@ -5,12 +5,12 @@ import { updateStudentThunk } from '../redux/student/student.actions';
 import StudentForm from '../components/studentForm';
 
 const EditStudent = () => {
-    const {studentId} = useParams();
+    const { studentId } = useParams();
     const allStudents = useSelector((state) => state.student.allStudents);
     //const allCampuses = useSelector((state) => state.campus.allCampuses);
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    
+
     // State for all variables of a student
     const [initialFormValues, setInitialFormValues] = useState({
         id: '',
@@ -39,7 +39,7 @@ const EditStudent = () => {
         }
     }, [allStudents, studentId]);
 
-    
+
 
     const handleFormSubmit = (updatedStudentData) => {
 
@@ -54,10 +54,12 @@ const EditStudent = () => {
     };
 
     return (
-        <div>
-            <h2>Edit Student Page</h2>
-            <StudentForm initialValues={initialFormValues} handleFormSubmit={handleFormSubmit} />
-        </div>
+        <center>
+            <div>
+                <h2>Edit Student Page</h2>
+                <StudentForm initialValues={initialFormValues} handleFormSubmit={handleFormSubmit} />
+            </div>
+        </center>
     );
 };
 

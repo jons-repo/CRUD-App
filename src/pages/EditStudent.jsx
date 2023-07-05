@@ -39,6 +39,7 @@ const EditStudent = () => {
     }, [allStudents, studentId]);
 
     const handleFormSubmit = (updatedStudentData) => {
+
         updatedStudentData.id = studentId;
         dispatch(updateStudentThunk(updatedStudentData))
             .then(() => {

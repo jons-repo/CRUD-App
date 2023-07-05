@@ -136,13 +136,16 @@ const StudentForm = ({ handleFormSubmit, initialValues}) => {
                     </div>
                 </div>
                 <div class="formInput">
-                    <label htmlFor="campus id">Campus: </label>
-                    <select id="campusId" value={campusId} onChange={handleCampusIdChange}>
-                      <option value = "">Select Campus</option>
-                      {allCampuses 
-                      ? allCampuses.map((campus) => {return(<option key={campus.id} value={campus.id}>{campus.name}</option>)})
-                      : "error getting data"};
-                    </select>
+                    <label htmlFor="campus id">Campus </label>
+                    <div>
+                        <select id="campusId" value={campusId} onChange={handleCampusIdChange}>
+                        <option value = "">Select Campus</option>
+                        {allCampuses 
+                        ? allCampuses.map((campus) => {return(<option key={campus.id} value={campus.id}>{campus.name}</option>)})
+                        : "error getting data"};
+                        </select>                        
+                    </div>
+
                 </div>
                 <br></br>
 

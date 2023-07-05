@@ -12,9 +12,13 @@ const CampusCard = ({campusCard}) => {
             <p className="card-text">Total Students: {campusCard.students.length}</p>
           </div>
           <div className="card-body">
-            <a href="#" className="card-link">Edit</a>
-            <a href="#" className="card-link">Delete</a>
-          </div>
+          <button className="card-link">
+            Edit
+          </button>
+          <button className="card-link">
+            Delete
+          </button>
+        </div>
         </div>
       </div>
     );

@@ -38,7 +38,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/campuses" element={<AllCampuses />} />
-        {/* <Route path="/campuses/show" element={<ShowCampus />} /> */}
+        <Route path="/view-campus/campusId" element={<ShowCampus />} />
         <Route path="/campuses/add" element={<AddCampus />} />
         {/* <Route path="/campuses/edit" element={<EditCampus />} /> */}
 

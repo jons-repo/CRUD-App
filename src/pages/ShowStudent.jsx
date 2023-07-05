@@ -21,6 +21,7 @@ const ShowStudent = () => {
         imageUrl: '',
         gpa: 0.0,
         campusId: 0,
+        campus: ''
     });
 
     // On mount, fetch data and set initial values
@@ -36,12 +37,13 @@ const ShowStudent = () => {
                 imageUrl: student.imageUrl,
                 gpa: student.gpa,
                 campusId: student.campusId,
+                campus: student.campus.name
             });
         }
     }, [allStudents, studentId]);
 
     const handleViewCampusClick = () => {
-        // navigate(`/view-campus/${studentCard.id}`);
+        navigate(`/view-campus/${initialFormValues.campusId}`);
       }
     
       const handleEditClick = () => {
@@ -49,7 +51,13 @@ const ShowStudent = () => {
       };
     
       const handleDeleteClick = () => {
-        dispatch(deleteStudentThunk(initialFormValues.id));
+        dispatch(deleteStudentThunk(initialFormValues.id))
+        .then(() => {
+                navigate('/students');
+            })
+            .catch((error) => {
+                console.log(error);
+            });
       };
 
 
@@ -57,7 +65,7 @@ const ShowStudent = () => {
 
         <center>
             <div>
-                <h1 class="centered"></h1>
+                <h1 class="centered">View Student</h1>
                 <div className="card" style={{ width: '40rem' }}>
                     <div >
                         <img
@@ -75,6 +83,7 @@ const ShowStudent = () => {
                             <p class="leftCentered">Email: {initialFormValues.email}</p>
                             <p class="leftCentered">GPA: {initialFormValues.gpa}</p>
                             <p class="leftCentered">Campus ID: {initialFormValues.campusId}</p>
+                            <p class="leftCentered">Campus: {initialFormValues.campus}</p>
                         </div>
                     </div>
 

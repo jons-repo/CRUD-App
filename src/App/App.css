@@ -1,5 +1,6 @@
 .centered {
     text-align: center;
+    margin-top: 25px;
   }
   
   
@@ -57,4 +58,31 @@
 .formInput {
     margin: 10px;
     align-items: end;
+
 }
+
+.button {
+    background-color: transparent;
+    border-color: black;
+    border: 0;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    line-height: 1;
+    width: 100%; /* Large, mobile-friendly touch target */
+    border-radius: 3px;
+  
+    /* Media Queries */
+    @media (min-width: 37.5em) {
+      width: auto; 
+      padding:0.4rem 2rem;
+    }
+  }
+
+  .button:hover{
+    border: 2;
+    background-color: #bcdff7b6;
+  }
+
+  .button:active{
+    background-color:#bcdff7;
+  }

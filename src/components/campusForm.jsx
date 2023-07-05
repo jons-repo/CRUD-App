@@ -40,20 +40,20 @@ const CampusForm = ({handleFormSubmit}) => {
 
     const handleSubmitChange = (event) => {
         event.preventDefault();
-
+        
         const campusData = {
             name,
             imageUrl,
             address,
             description
         };
-
+        console.log(campusData);
         handleFormSubmit(campusData);
 
         setName("");
         setAddress("");
         setDescription("");
-        setDescription("");
+        setImageUrl("");
 
     };
 

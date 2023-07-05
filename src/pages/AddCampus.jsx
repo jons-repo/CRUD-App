@@ -6,7 +6,7 @@ const AddCampus = () => {
   const dispatch = useDispatch();
 
   const handleFormSubmit = (campusData) => {
-    dispatch(addCampusThunk);
+    dispatch(addCampusThunk(campusData));
   };
 
   return (

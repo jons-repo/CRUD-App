@@ -92,7 +92,7 @@ const CampusForm = ({handleFormSubmit}) => {
                 </div>
                 <br></br>
 
-                <button class="button" type="submit">Submit</button>
+                <button class="submitButton" type="submit">Submit</button>
 
 
             </form>

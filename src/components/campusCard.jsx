@@ -7,6 +7,10 @@ const CampusCard = ({ campusCard }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const handleViewClick = () => {
+    navigate(`/view-campus/${campusCard.id}`);
+  }
+
   const handleEditClick = () => {
     navigate(`/campuses/edit/${campusCard.id}`);
   };
@@ -22,9 +26,9 @@ const CampusCard = ({ campusCard }) => {
   };
 
   return (
-    <div className="button">
+    <div>
       <div className="card" style={{ width: '25rem' }}>
-        <div className="cardButton">
+        <div className="cardButton" onClick={() => handleViewClick(campusCard.id)}>
           <img
             src="https://img.freepik.com/free-vector/college-building-educational-institution-banner_1441-3616.jpg?size=626&ext=jpg"
             className="card-img-top"
@@ -35,7 +39,6 @@ const CampusCard = ({ campusCard }) => {
             <p className="card-text">Total Students: {campusCard.students.length}</p>
           </div>
         </div>
-
         <div className="card-body">
           <button onClick={handleEditClick} className="card-link">
             Edit
@@ -45,6 +48,7 @@ const CampusCard = ({ campusCard }) => {
           </button>
         </div>
       </div>
+
     </div>
   );
 };

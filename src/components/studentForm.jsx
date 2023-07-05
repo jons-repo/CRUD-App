@@ -79,7 +79,8 @@ const StudentForm = ({ handleFormSubmit, initialValues, allCampuses }) => {
             email,
             imageUrl,
             gpa,
-            campusId
+            campusId,
+            ...(initialValues ? {id : initialValues.id} : {}) // object spread syntax to include id only when edit data
         };
         console.log(studentData);
         handleFormSubmit(studentData);

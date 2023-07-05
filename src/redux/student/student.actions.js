@@ -48,6 +48,7 @@ export const updateStudent = (payload) => {
 export const updateStudentThunk = (updatedStudentData) => {
     return async (dispatch) => {
         try {
+            console.log(updatedStudentData.id);
             await axios.put(
                 `http://localhost:8000/api/students/${updatedStudentData.id}`,
                 updatedStudentData

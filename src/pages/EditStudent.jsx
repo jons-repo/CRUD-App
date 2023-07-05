@@ -39,6 +39,7 @@ const EditStudent = () => {
 
     // Submit form and update data
     const handleFormSubmit = (updatedStudentData) => {
+        console.log(updatedStudentData);
         dispatch(updateStudentThunk(updatedStudentData));
     };
 

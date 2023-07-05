@@ -20,8 +20,12 @@ const StudentCard = ({ studentCard, campusName2 }) => {
 
   const handleDeleteClick = () => {
     dispatch(deleteStudentThunk(studentCard.id));
-    window.location.reload();
-  };
+    if (campusName2) {
+      setTimeout(() => {
+        window.location.reload();
+      }, 200);
+    };
+  }
 
   return (
     <div>

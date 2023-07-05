@@ -12,6 +12,12 @@ const studentReducer = (state = INITIAL_STUDENT_STATE, { type, payload }) => {
         case StudentActionType.ADD_STUDENT:
             return { ...state, allStudents: [...state.allStudents, payload] };
 
+        case StudentActionType.UPDATE_STUDENT:
+            const updatedStudents = state.allStudents.map((student) => 
+                student.id === payload.id ? payload : student
+            );
+            return { ...state, allStudents : updatedStudents};
+
         case StudentActionType.DELETE_STUDENT:
             return {
                 ...state,

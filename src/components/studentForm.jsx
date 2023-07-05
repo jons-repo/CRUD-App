@@ -1,13 +1,32 @@
-import React, { useState, useEffect } from "react";
-const StudentForm = ({ handleFormSubmit, initialValues }) => {
-
-
+import React, { useState } from "react";
+import { useEffect } from "react";
+const StudentForm = ({ handleFormSubmit, initialValues, allCampuses }) => {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
     const [imageUrl, setImageUrl] = useState("");
     const [gpa, setGpa] = useState(0.0);
     const [campusId, setCampusID] = useState(0);
+    const [emailError, setEmailError] = useState('');
+
+    //validate Email
+    const validateEmail = (input) => {
+        //check here for regex format > https://mailtrap.io/blog/validate-emails-in-react/
+        const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+        return emailRegex.test(input);
+    }
+
+    // Set initial form values
+    useEffect(() => {
+        if (initialValues) {
+            setFirstName(initialValues.firstName);
+            setLastName(initialValues.lastName);
+            setEmail(initialValues.email);
+            setImageUrl(initialValues.imageUrl);
+            setGpa(initialValues.gpa);
+            setCampusID(initialValues.campusId);
+        }
+    }, [initialValues]);
 
     // Set initial form values
     useEffect(() => {
@@ -49,13 +68,19 @@ const StudentForm = ({ handleFormSubmit, initialValues }) => {
     const handleSubmitChange = (event) => {
         event.preventDefault();
 
+        if(!validateEmail(email)){
+            setEmailError("Please enter a valid email address.");
+            return;
+        }
+
         const studentData = {
             firstName,
             lastName,
             email,
             imageUrl,
             gpa,
-            campusId
+            campusId,
+            ...(initialValues ? {id : initialValues.id} : {}) // object spread syntax to include id only when edit data
         };
         console.log(studentData);
         handleFormSubmit(studentData);
@@ -66,9 +91,11 @@ const StudentForm = ({ handleFormSubmit, initialValues }) => {
         setImageUrl("");
         setGpa(0.0);
         setCampusID(0);
+        setEmailError("");
     };
 
     return (
+
         <div>
             <br></br>
             <form className="form-group" style={{ backgroundColor: "#e3f2fd", display: "inline-block", padding:" 1rem 2rem", borderRadius: "10px"}} onSubmit={handleSubmitChange}>
@@ -108,10 +135,13 @@ const StudentForm = ({ handleFormSubmit, initialValues }) => {
                     </div>
                 </div>
                 <div class="formInput">
-                    <label htmlFor="campus id">Campus ID </label>
-                    <div>
-                        <input type="number" id="campuId" value={campusId} onChange={handleCampusIdChange} />
-                    </div>
+                    <label htmlFor="campus id">Campus: </label>
+                    <select id="campusId" value={campusId} onChange={handleCampusIdChange}>
+                      <option value = "">Select Campus</option>
+                      {allCampuses 
+                      ? allCampuses.map((campus) => {return(<option key={campus.id} value={campus.id}>{campus.name}</option>)})
+                      : "error getting data"};
+                    </select>
                 </div>
                 <br></br>
 
@@ -125,7 +155,6 @@ const StudentForm = ({ handleFormSubmit, initialValues }) => {
 
 
         </div>
-
 
     );
 };

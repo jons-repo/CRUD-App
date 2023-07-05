@@ -1,1 +1,88 @@
+.centered {
+    text-align: center;
+    margin-top: 25px;
+  }
+  
+  
+  .banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
 
+    text-align: center;
+
+  }
+  
+  .bannerIMG {
+    display: block;
+    max-width: 20%;
+    max-height: 20%;
+  }
+  
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+  }
+  .card-padding{
+    padding: 10px; 
+  }
+  .navbar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: capitalize;
+    background-color: black;
+    text-align: center;
+    text-decoration:aqua;
+  }
+
+  .navbar > * + * {
+    font-size:large;
+    text-align: center;
+    padding-left:2rem; 
+    padding-right: 2rem;
+  }
+
+  .addForm {
+    display:inline-block;
+    justify-content:left;
+
+
+    margin: 10px;
+    background-color: rgb(137, 150, 152);
+    
+  }
+.formInput {
+    margin: 10px;
+    align-items: end;
+
+}
+
+.button {
+    background-color: transparent;
+    border-color: black;
+    border: 0;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    line-height: 1;
+    width: 100%; /* Large, mobile-friendly touch target */
+    border-radius: 3px;
+  
+    /* Media Queries */
+    @media (min-width: 37.5em) {
+      width: auto; 
+      padding:0.4rem 2rem;
+    }
+  }
+
+  .button:hover{
+    border: 2;
+    background-color: #bcdff7b6;
+  }
+
+  .button:active{
+    background-color:#bcdff7;
+  }

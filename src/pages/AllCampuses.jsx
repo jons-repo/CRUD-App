@@ -17,10 +17,13 @@ const AllCampuses = () => {
 
   return (
     <div>
-        <h1>Campus page</h1>
-        <ListCampuses list = {allCampuses}/>
+        <h1 class="centered">Campus page</h1>
+        <div class="cards">
+            <ListCampuses list = {allCampuses}/>
+        </div>
+
     </div>
-  )
-}
+  );
+};
 
 export default AllCampuses;

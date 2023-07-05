@@ -7,7 +7,7 @@ const ListStudents = (props) => {
         props.list.map((studentCard) => {
             console.log(studentCard)
             return(
-                <div>
+                <div class="card-padding">
                     <StudentCard studentCard = {studentCard} />
                 </div>
             );

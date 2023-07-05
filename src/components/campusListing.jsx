@@ -7,7 +7,7 @@ const ListCampuses = (props) => {
         props.list.map((campusCard) => {
             console.log(campusCard)
             return(
-                <div>
+                <div class = "card-padding">
                     <CampusCard campusCard={campusCard} />
                 </div>
             );

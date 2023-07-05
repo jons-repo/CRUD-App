@@ -43,7 +43,6 @@ const StudentForm = ({ handleFormSubmit, initialValues}) => {
 
     const handleFirstNameChange = (event) => {
         setFirstName(event.target.value);
-        console.log(firstName);
     };
 
     const handleLastNameChange = (event) => {
@@ -119,7 +118,7 @@ const StudentForm = ({ handleFormSubmit, initialValues}) => {
                 <div class="formInput">
                     <label htmlFor="email">Email </label>
                     <div>
-                        <input type="text" placeholder="fake@gmail.com" id="email" value={email} onChange={handleEmailChange} />
+                        <input type="text" placeholder="fake@gmail.com" id="email" value={email} onChange={handleEmailChange} /> {emailError}
                     </div>
                 </div>
                 <div class="formInput">

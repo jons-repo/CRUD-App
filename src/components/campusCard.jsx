@@ -1,17 +1,20 @@
 import React from 'react'
 
-const CampusCard = ({campusCard}) => {
-    console.log(campusCard)
-    return(
-      <div>
+const CampusCard = ({ campusCard }) => {
+  console.log(campusCard)
+  return (
+    <div class="button">
 
-        <div className="card" style={{ width: "25rem" }}>
+      <div className="card" style={{ width: "25rem" }}>
+        <div class="cardButton">
           <img src="https://img.freepik.com/free-vector/college-building-educational-institution-banner_1441-3616.jpg?size=626&ext=jpg" className="card-img-top" alt="..." />
           <div className="card-body">
             <h5 className="card-title">{campusCard.name}</h5>
             <p className="card-text">Total Students: {campusCard.students.length}</p>
           </div>
-          <div className="card-body">
+        </div>
+
+        <div className="card-body">
           <button className="card-link">
             Edit
           </button>
@@ -19,9 +22,9 @@ const CampusCard = ({campusCard}) => {
             Delete
           </button>
         </div>
-        </div>
       </div>
-    );
+    </div>
+  );
 
 }
 

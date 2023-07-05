@@ -61,7 +61,7 @@
 
 }
 
-.button {
+.submitButton {
     background-color: transparent;
     border-color: black;
     border: 0;
@@ -78,11 +78,24 @@
     }
   }
 
-  .button:hover{
+  .submitButton:hover{
     border: 2;
     background-color: #bcdff7b6;
   }
 
-  .button:active{
+  .submitButton:active{
     background-color:#bcdff7;
+  }
+
+  .cardButton {
+
+  }
+
+  .cardButton:hover{
+    border: 2;
+    background-color: #bbc6cd7d;
+  }
+
+  .cardButton:active{
+    background-color: #bbc6cdb6;
   }

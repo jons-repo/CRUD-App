@@ -99,3 +99,8 @@
   .cardButton:active{
     background-color: #bbc6cdb6;
   }
+
+  .leftCentered {
+    padding-left: 10rem;
+    text-align: left;
+  }

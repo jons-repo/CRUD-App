@@ -128,11 +128,11 @@ const CampusForm = ({ handleFormSubmit, initialValues }) => {
                         />
                     </div>
                 </div>
-                <br />
 
-                <button className="button" type="submit">
-                    Submit
-                </button>
+                <br></br>
+
+                <button class="submitButton" type="submit">Submit</button>
+
             </form>
         </div>
     );

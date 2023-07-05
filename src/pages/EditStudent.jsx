@@ -56,7 +56,7 @@ const EditStudent = () => {
     return (
         <center>
             <div>
-                <h2>Edit Student Page</h2>
+                <h1 class="centered">Edit Student Page</h1>
                 <StudentForm initialValues={initialFormValues} handleFormSubmit={handleFormSubmit} />
             </div>
         </center>
@@ -64,3 +64,12 @@ const EditStudent = () => {
 };
 
 export default EditStudent;
+
+
+// id: student.id,
+// firstName: student.firstName,
+// lastName: student.lastName,
+// email: student.email,
+// imageUrl: student.imageUrl,
+// gpa: student.gpa,
+// campusId: student.campusId,

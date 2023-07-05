@@ -13,27 +13,43 @@ const ShowCampus = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
+    const fetchAllCampuses = () => {
+        return dispatch(fetchAllCampusesThunk());
+       }
+    
+       useEffect(() => {
+        fetchAllCampuses();
+       }, [])
     // State for all variables of a student
     const [initialFormValues, setInitialFormValues] = useState({
         id: '',
         name: '',
         imageUrl: '',
         address: '',
-        description: ''
+        description: '',
+        students: []
     });
 
     // On mount, fetch data and set initial values
     useEffect(() => {
         // Find student with right id
+        
         const campus = allCampuses.find((student) => student.id === parseInt(campusId));
+        console.log("campus =  ", campus);
         if (campus) {
             setInitialFormValues({
                 id: campus.id,
                 name: campus.name,
                 imageUrl: campus.imageUrl,
                 address: campus.address,
-                description: campus.description
+                description: campus.description,
+                students: campus.students
             });
+            for( const key in campus.students){
+                // campus.students[key].push(campus)
+                console.log(campus.students[key])
+            }
+
         }
     }, [allCampuses, campusId]);
 
@@ -90,8 +106,9 @@ const ShowCampus = () => {
                     </div>
                 </div>
                 <h1 class="centered">Students</h1>
+                <h2>{initialFormValues.name}</h2>
                 <div class="cards">
-                    <ListStudents list={[]} />
+                    <ListStudents list={initialFormValues.students} campusName2 = {initialFormValues.name}/>
                 </div>
 
 

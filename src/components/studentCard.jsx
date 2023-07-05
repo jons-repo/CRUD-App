@@ -3,8 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { deleteStudentThunk } from '../redux/student/student.actions';
 
-const StudentCard = ({ studentCard }) => {
-  const campusName = studentCard.campus ? studentCard.campus.name : 'none';
+const StudentCard = ({ studentCard, campusName2 }) => {
+  const campusName = studentCard.campus ? studentCard.campus.name : campusName2 ? campusName2 : 'none';
+  console.log("campuse name: ", campusName2);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();

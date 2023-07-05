@@ -17,7 +17,7 @@ const AddStudent = () => {
         <center>
             <div>
             <h1 class="centered">Add Student Page</h1>
-            <StudentForm onSubmit={handleFormSubmit}/>
+            <StudentForm handleFormSubmit={handleFormSubmit}/>
             </div>
         </center>
 

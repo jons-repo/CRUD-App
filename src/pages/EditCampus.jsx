@@ -11,6 +11,7 @@ const EditCampus = () => {
     const navigate = useNavigate();
 
     const [initialFormValues, setInitialFormValues] = useState({
+        id: '',
         name: '',
         address: '',
         description: '',
@@ -21,6 +22,7 @@ const EditCampus = () => {
         const campus = allCampuses.find((campus) => campus.id === parseInt(campusId));
         if (campus) {
             setInitialFormValues({
+                id: campus.id,
                 name: campus.name,
                 address: campus.address,
                 description: campus.description,
@@ -34,7 +36,6 @@ const EditCampus = () => {
     }, [dispatch]);
 
     const handleFormSubmit = (updatedCampusData) => {
-        updatedCampusData.id = campusId;
         dispatch(updateCampusThunk(updatedCampusData))
             .then(() => {
                 navigate('/campuses');
@@ -45,13 +46,13 @@ const EditCampus = () => {
     };
 
     return (
-        <div>
-            <h2>Edit Campus Page</h2>
-            <CampusForm
-                initialValues={initialFormValues}
-                handleFormSubmit={handleFormSubmit}
-            />
-        </div>
+        <center>
+            <div>
+            <h1 class="centered">Edit Campus Page</h1>
+            <CampusForm initialValues={initialFormValues} handleFormSubmit={handleFormSubmit} />
+        </div>  
+        </center>
+
     );
 };
 

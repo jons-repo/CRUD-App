@@ -1,11 +1,24 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { deleteCampusThunk } from '../redux/campus/campus.actions';
 
 const CampusCard = ({ campusCard }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleEditClick = () => {
     navigate(`/campuses/edit/${campusCard.id}`);
+  };
+
+  const handleDeleteClick = () => {
+    dispatch(deleteCampusThunk(campusCard.id))
+      .then(() => {
+        navigate('/campuses');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -27,7 +40,7 @@ const CampusCard = ({ campusCard }) => {
           <button onClick={handleEditClick} className="card-link">
             Edit
           </button>
-          <button className="card-link">
+          <button onClick={handleDeleteClick} className="card-link">
             Delete
           </button>
         </div>

@@ -51,13 +51,11 @@ const CampusForm = ({ handleFormSubmit, initialValues }) => {
         } else {
             dispatch(addCampus(campusData));
         }
-
+        handleFormSubmit(campusData);
         setName('');
         setImageUrl('');
         setAddress('');
         setDescription('');
-
-        handleFormSubmit();
     };
 
     return (

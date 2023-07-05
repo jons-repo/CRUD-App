@@ -12,8 +12,8 @@ const StudentForm = ({ handleFormSubmit, initialValues}) => {
     const [email, setEmail] = useState("");
     const [imageUrl, setImageUrl] = useState("");
     const [gpa, setGpa] = useState(0.0);
-    const [campusId, setCampusID] = useState(0);
-    const [emailError, setEmailError] = useState('');
+    const [campusId, setCampusID] = useState(null);
+    const [emailError, setEmailError] = useState(null);
 
     //validate Email
     const validateEmail = (input) => {
@@ -118,7 +118,8 @@ const StudentForm = ({ handleFormSubmit, initialValues}) => {
                 <div class="formInput">
                     <label htmlFor="email">Email </label>
                     <div>
-                        <input type="text" placeholder="fake@gmail.com" id="email" value={email} onChange={handleEmailChange} /> {emailError}
+                        <input type="text" placeholder="fake@gmail.com" id="email" value={email} onChange={handleEmailChange} />
+                        {emailError ? <br/> : null} {emailError}
                     </div>
                 </div>
                 <div class="formInput">

@@ -14,6 +14,7 @@ const StudentCard = ({ studentCard, campusName2 }) => {
     navigate(`/view-student/${studentCard.id}`);
   }
 
+
   const handleEditClick = () => {
     navigate(`/edit-student/${studentCard.id}`);
   };

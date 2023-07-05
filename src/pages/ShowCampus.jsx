@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { deleteStudentThunk } from '../redux/student/student.actions';
 import ListStudents from "../components/studentListing";
+import { deleteCampusThunk } from '../redux/campus/campus.actions';
+
 
 import { fetchAllCampusesThunk } from "../redux/campus/campus.actions";
 const ShowCampus = () => {
@@ -53,23 +55,19 @@ const ShowCampus = () => {
         }
     }, [allCampuses, campusId]);
 
-    const handleViewCampusClick = () => {
-        // navigate(`/view-campus/${initialFormValues.campusId}`);
-    }
-
     const handleEditClick = () => {
-        // navigate(`/edit-campuse/${initialFormValues.id}`);
-    };
-
-    const handleDeleteClick = () => {
-        // dispatch(deleteStudentThunk(initialFormValues.id))
-        // .then(() => {
-        //         navigate('/students');
-        //     })
-        //     .catch((error) => {
-        //         console.log(error);
-        //     });
-    };
+        navigate(`/campuses/edit/${initialFormValues.id}`);
+      };
+    
+      const handleDeleteClick = () => {
+        dispatch(deleteCampusThunk(initialFormValues.id))
+          .then(() => {
+            navigate('/campuses');
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      };
 
 
     return (

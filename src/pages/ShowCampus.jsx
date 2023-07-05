@@ -106,7 +106,6 @@ const ShowCampus = () => {
                     </div>
                 </div>
                 <h1 class="centered">Students</h1>
-                <h2>{initialFormValues.name}</h2>
                 <div class="cards">
                     <ListStudents list={initialFormValues.students} campusName2 = {initialFormValues.name}/>
                 </div>

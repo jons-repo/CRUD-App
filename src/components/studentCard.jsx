@@ -20,6 +20,7 @@ const StudentCard = ({ studentCard, campusName2 }) => {
 
   const handleDeleteClick = () => {
     dispatch(deleteStudentThunk(studentCard.id));
+    window.location.reload();
   };
 
   return (

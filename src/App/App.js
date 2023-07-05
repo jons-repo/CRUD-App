@@ -29,7 +29,6 @@ function App() {
             {/* <Link to="/campuses/edit">edit campus</Link> */}
             
             <Link to="/students" >Students</Link>
-            {/* <Link to="/students/show" >Show Students</Link>            */}
             <Link to="/students/add" >Add Students</Link>           
             {/* <Link to="/students/edit" >Edit Students</Link>  */}
             <p></p>
@@ -44,7 +43,7 @@ function App() {
         {/* <Route path="/campuses/edit" element={<EditCampus />} /> */}
 
         <Route path="/students" element={<AllStudents />} />
-        {/* <Route path="/students/show" element={<ShowStudent />} /> */}
+        <Route path={`/view-student/:studentId`} element={<ShowStudent />} />
         <Route path="/students/add" element={<AddStudent />} />
         <Route path={`/edit-student/:studentId`} element={<EditStudent />} />
       </Routes>

@@ -64,3 +64,12 @@ const EditStudent = () => {
 };
 
 export default EditStudent;
+
+
+// id: student.id,
+// firstName: student.firstName,
+// lastName: student.lastName,
+// email: student.email,
+// imageUrl: student.imageUrl,
+// gpa: student.gpa,
+// campusId: student.campusId,

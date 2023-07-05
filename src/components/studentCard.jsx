@@ -9,6 +9,10 @@ const StudentCard = ({ studentCard }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const handleViewClick = () => {
+    navigate(`/view-student/${studentCard.id}`);
+  }
+
   const handleEditClick = () => {
     navigate(`/edit-student/${studentCard.id}`);
   };
@@ -20,7 +24,7 @@ const StudentCard = ({ studentCard }) => {
   return (
     <div>
       <div className="card" style={{ width: '18rem' }}>
-        <div class="cardButton">
+        <div class="cardButton" onClick={() => handleViewClick(studentCard.id)}>
           <img
             src="https://img.freepik.com/free-vector/college-building-educational-institution-banner_1441-3616.jpg?size=626&ext=jpg"
             className="card-img-top"

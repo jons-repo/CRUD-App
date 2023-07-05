@@ -13,11 +13,15 @@ const AddStudent = () => {
     };
 
     return (
-        //tested allCampuses flow
-        <div>
-            <h2>Add Student page</h2>
-            <StudentForm handleFormSubmit={handleFormSubmit}/>
-        </div>
+
+        <center>
+            <div>
+            <h1 class="centered">Add Student Page</h1>
+            <StudentForm onSubmit={handleFormSubmit}/>
+            </div>
+        </center>
+
     );
+    
 };
 export default AddStudent;

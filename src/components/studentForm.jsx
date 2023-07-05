@@ -96,40 +96,67 @@ const StudentForm = ({ handleFormSubmit, initialValues}) => {
     };
 
     return (
-        <form onSubmit={handleSubmitChange}>
-            <div>
-                <label htmlFor="firstName">First Name: </label>
-                <input type="text" id="firstName" value={firstName} onChange={handleFirstNameChange} />
-            </div>
-            <div>
-                <label htmlFor="lastName">Last Name: </label>
-                <input type="text" id="lastName" value={lastName} onChange={handleLastNameChange} />
-            </div>
-            <div>
-                <label htmlFor="email">Email: </label>
-                <input type="text" id="email" value={email} onChange={handleEmailChange} /> {emailError}
-                
-            </div>
-            <div>
-                <label htmlFor="imageUrl">Image Url: </label>
-                <input type="text" id="imageUrl" value={imageUrl} onChange={handleImageUrlChange} />
-            </div>
-            <div>
-                <label htmlFor="gpa">GPA: </label>
-                <input type="number" step="0.1" id="gpa" value={gpa} onChange={handleGpaChange} />
-            </div>
-            <div>
-                <label htmlFor="campus id">Campus : </label>
-                <select id="campusId" value={campusId} onChange={handleCampusIdChange}>
-                    <option value = "">Select Campus</option>
-                    {allCampuses 
-                    ? allCampuses.map((campus) => {return(<option key={campus.id} value={campus.id}>{campus.name}</option>)})
-                    : "error getting data"}
-                </select> 
-            </div>
 
-            <button type="submit">Submit</button>
-        </form>
+        <div>
+            <br></br>
+            <form className="form-group" style={{ backgroundColor: "#e3f2fd", display: "inline-block", padding:" 1rem 2rem", borderRadius: "10px"}} onSubmit={handleSubmitChange}>
+
+                <center><legend><h3><b>Student Registration Form</b></h3></legend></center><br />
+
+
+                <div class="formInput">
+                    <label htmlFor="firstName" >First Name </label>
+                    <div>
+                        <input type="text" placeholder="FirstName" id="firstName" value={firstName} onChange={handleFirstNameChange} />
+                    </div>
+                </div>
+                <div class="formInput">
+                    <label htmlFor="lastName">Last Name </label>
+                    <div>
+                        <input type="text" placeholder="LastName" id="lastName" value={lastName} onChange={handleLastNameChange} />
+                    </div>
+                </div>
+                <div class="formInput">
+                    <label htmlFor="email">Email </label>
+                    <div>
+                        <input type="text" placeholder="fake@gmail.com" id="email" value={email} onChange={handleEmailChange} />
+                    </div>
+                </div>
+                <div class="formInput">
+                    <label htmlFor="imageUrl">Image Url </label>
+                    <div>
+                        <input type="text" placeholder="http://image.com" id="imageUrl" value={imageUrl} onChange={handleImageUrlChange} />
+
+                    </div>
+                </div>
+                <div class="formInput">
+                    <label htmlFor="gpa">GPA </label>
+                    <div>
+                        <input type="number" step="0.1" id="gpa" value={gpa} onChange={handleGpaChange} />
+                    </div>
+                </div>
+                <div class="formInput">
+                    <label htmlFor="campus id">Campus: </label>
+                    <select id="campusId" value={campusId} onChange={handleCampusIdChange}>
+                      <option value = "">Select Campus</option>
+                      {allCampuses 
+                      ? allCampuses.map((campus) => {return(<option key={campus.id} value={campus.id}>{campus.name}</option>)})
+                      : "error getting data"};
+                    </select>
+                </div>
+                <br></br>
+
+                <button class="button" type="submit">Submit</button>
+
+
+            </form>
+
+
+            {/* <div class="alert alert-success" role="alert" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i> Success!.</div> */}
+
+
+        </div>
+
     );
 };
 

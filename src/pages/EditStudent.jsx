@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {useParams} from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateStudentThunk } from '../redux/student/student.actions';
 import StudentForm from '../components/studentForm';
@@ -8,6 +8,7 @@ const EditStudent = () => {
     const {studentId} = useParams();
     const allStudents = useSelector((state) => state.student.allStudents);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     
     // State for all variables of a student
     const [initialFormValues, setInitialFormValues] = useState({
@@ -37,10 +38,16 @@ const EditStudent = () => {
         }
     }, [allStudents, studentId]);
 
-    // Submit form and update data
     const handleFormSubmit = (updatedStudentData) => {
-        console.log(updatedStudentData);
-        dispatch(updateStudentThunk(updatedStudentData));
+
+        updatedStudentData.id = studentId;
+        dispatch(updateStudentThunk(updatedStudentData))
+            .then(() => {
+                navigate('/students');
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     };
 
     return (

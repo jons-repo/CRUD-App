@@ -17,6 +17,7 @@ function App() {
   return (
     <div>
     <Router>
+      
         <div className="App">
           
           <nav className="navbar" style={{ backgroundColor: "#e3f2fd" }}>

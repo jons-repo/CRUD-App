@@ -44,4 +44,17 @@
     padding-left:2rem; 
     padding-right: 2rem;
   }
-  
+
+  .addForm {
+    display:inline-block;
+    justify-content:left;
+
+
+    margin: 10px;
+    background-color: rgb(137, 150, 152);
+    
+  }
+.formInput {
+    margin: 10px;
+    align-items: end;
+}

@@ -10,10 +10,13 @@ const AddStudent = () => {
     };
 
     return (
-        <div>
-            <h2>Add Student page</h2>
+        <center>
+            <div>
+            <h2 class="centered">Add Student Page</h2>
             <StudentForm onSubmit={handleFormSubmit}/>
-        </div>
+            </div>
+        </center>
     );
+    
 };
 export default AddStudent;

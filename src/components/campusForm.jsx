@@ -1,25 +1,23 @@
-import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
-import { fetchAllStudentsThunk } from "../redux/student/student.actions";
+import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { addCampus, updateCampus } from '../redux/campus/campus.actions';
 
-const CampusForm = ({ handleFormSubmit }) => {
-    const allStudents = useSelector((state) => state.student.allStudents);
+const CampusForm = ({ handleFormSubmit, initialValues }) => {
     const dispatch = useDispatch();
 
-    // Initialize useStates
-    const [name, setName] = useState("");
-    const [imageUrl, setImageUrl] = useState("");
-    const [address, setAddress] = useState("");
-    const [description, setDescription] = useState("");
-
-    const fetchAllStudents = () => {
-        return dispatch(fetchAllStudentsThunk());
-    };
+    const [name, setName] = useState('');
+    const [imageUrl, setImageUrl] = useState('');
+    const [address, setAddress] = useState('');
+    const [description, setDescription] = useState('');
 
     useEffect(() => {
-        fetchAllStudents();
-    }, [dispatch]);
+        if (initialValues) {
+            setName(initialValues.name);
+            setImageUrl(initialValues.imageUrl);
+            setAddress(initialValues.address);
+            setDescription(initialValues.description);
+        }
+    }, [initialValues]);
 
     const handleNameChange = (event) => {
         setName(event.target.value);
@@ -37,7 +35,7 @@ const CampusForm = ({ handleFormSubmit }) => {
         setDescription(event.target.value);
     };
 
-    const handleSubmitChange = (event) => {
+    const handleSubmit = (event) => {
         event.preventDefault();
 
         const campusData = {
@@ -45,14 +43,21 @@ const CampusForm = ({ handleFormSubmit }) => {
             imageUrl,
             address,
             description,
+            ...(initialValues ? { id: initialValues.id } : {}),
         };
-        console.log(campusData);
-        handleFormSubmit(campusData);
 
-        setName("");
-        setAddress("");
-        setDescription("");
-        setImageUrl("");
+        if (initialValues) {
+            dispatch(updateCampus(campusData));
+        } else {
+            dispatch(addCampus(campusData));
+        }
+
+        setName('');
+        setImageUrl('');
+        setAddress('');
+        setDescription('');
+
+        handleFormSubmit();
     };
 
     return (
@@ -61,24 +66,24 @@ const CampusForm = ({ handleFormSubmit }) => {
             <form
                 className="form-group"
                 style={{
-                    backgroundColor: "#e3f2fd",
-                    display: "inline-block",
-                    padding: "1rem 2rem",
-                    borderRadius: "10px",
+                    backgroundColor: '#e3f2fd',
+                    display: 'inline-block',
+                    padding: '1rem 2rem',
+                    borderRadius: '10px',
                 }}
-                onSubmit={handleSubmitChange}
+                onSubmit={handleSubmit}
             >
                 <center>
                     <legend>
                         <h3>
-                            <b>Campus Form</b>
+                            <b>Campus Registration Form</b>
                         </h3>
                     </legend>
                 </center>
                 <br />
 
                 <div className="formInput">
-                    <label htmlFor="name">Campus Name</label>
+                    <label htmlFor="name">Name</label>
                     <div>
                         <input
                             type="text"
@@ -86,30 +91,6 @@ const CampusForm = ({ handleFormSubmit }) => {
                             id="name"
                             value={name}
                             onChange={handleNameChange}
-                        />
-                    </div>
-                </div>
-                <div className="formInput">
-                    <label htmlFor="address">Address</label>
-                    <div>
-                        <input
-                            type="text"
-                            placeholder="Address"
-                            id="address"
-                            value={address}
-                            onChange={handleAddressChange}
-                        />
-                    </div>
-                </div>
-                <div className="formInput">
-                    <label htmlFor="description">Description</label>
-                    <div>
-                        <input
-                            type="text"
-                            placeholder="Description"
-                            id="description"
-                            value={description}
-                            onChange={handleDescriptionChange}
                         />
                     </div>
                 </div>
@@ -122,6 +103,30 @@ const CampusForm = ({ handleFormSubmit }) => {
                             id="imageUrl"
                             value={imageUrl}
                             onChange={handleImageUrlChange}
+                        />
+                    </div>
+                </div>
+                <div className="formInput">
+                    <label htmlFor="address">Address</label>
+                    <div>
+                        <input
+                            type="text"
+                            placeholder="Campus Address"
+                            id="address"
+                            value={address}
+                            onChange={handleAddressChange}
+                        />
+                    </div>
+                </div>
+                <div className="formInput">
+                    <label htmlFor="description">Description</label>
+                    <div>
+                        <input
+                            type="text"
+                            placeholder="Campus Description"
+                            id="description"
+                            value={description}
+                            onChange={handleDescriptionChange}
                         />
                     </div>
                 </div>

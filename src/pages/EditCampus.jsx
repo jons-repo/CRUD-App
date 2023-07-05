@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateCampusThunk } from '../redux/campus/campus.actions';
+import { updateCampusThunk, fetchAllCampusesThunk } from '../redux/campus/campus.actions';
 import CampusForm from '../components/campusForm';
 
 const EditCampus = () => {
@@ -29,6 +29,10 @@ const EditCampus = () => {
         }
     }, [allCampuses, campusId]);
 
+    useEffect(() => {
+        dispatch(fetchAllCampusesThunk());
+    }, [dispatch]);
+
     const handleFormSubmit = (updatedCampusData) => {
         updatedCampusData.id = campusId;
         dispatch(updateCampusThunk(updatedCampusData))
@@ -43,7 +47,10 @@ const EditCampus = () => {
     return (
         <div>
             <h2>Edit Campus Page</h2>
-            <CampusForm initialFormValues={initialFormValues} handleFormSubmit={handleFormSubmit} />
+            <CampusForm
+                initialValues={initialFormValues}
+                handleFormSubmit={handleFormSubmit}
+            />
         </div>
     );
 };

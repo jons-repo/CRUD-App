@@ -38,3 +38,21 @@ export const addCampusThunk = (campusData) => {
         }
     };
 };
+
+export const deleteCampus = (payload) => {
+    return {
+        type: CampusActionType.DELETE_CAMPUS,
+        payload: payload,
+    };
+};
+
+export const deleteCampusThunk = (campusId) => {
+    return async (dispatch) => {
+        try {
+            await axios.delete(`http://localhost:8000/api/campuses/${campusId}`);
+            dispatch(deleteCampus(campusId));
+        } catch (error) {
+            console.error(error);
+        }
+    };
+};

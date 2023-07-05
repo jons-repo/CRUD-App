@@ -1,11 +1,25 @@
-import React, { useState } from "react";
-const StudentForm = ({ onSubmit }) => {
+import React, { useState, useEffect } from "react";
+const StudentForm = ({ handleFormSubmit, initialValues }) => {
+
+
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
     const [imageUrl, setImageUrl] = useState("");
     const [gpa, setGpa] = useState(0.0);
     const [campusId, setCampusID] = useState(0);
+
+    // Set initial form values
+    useEffect(() => {
+        if (initialValues) {
+            setFirstName(initialValues.firstName);
+            setLastName(initialValues.lastName);
+            setEmail(initialValues.email);
+            setImageUrl(initialValues.imageUrl);
+            setGpa(initialValues.gpa);
+            setCampusID(initialValues.campusId);
+        }
+    }, [initialValues]);
 
     const handleFirstNameChange = (event) => {
         setFirstName(event.target.value);
@@ -44,7 +58,7 @@ const StudentForm = ({ onSubmit }) => {
             campusId
         };
         console.log(studentData);
-        onSubmit(studentData);
+        handleFormSubmit(studentData);
 
         setFirstName("");
         setLastName("");

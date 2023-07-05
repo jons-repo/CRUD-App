@@ -42,6 +42,7 @@ function App() {
         {/* <Route path="/campuses/show" element={<ShowCampus />} /> */}
         <Route path="/campuses/add" element={<AddCampus />} />
         {/* <Route path="/campuses/edit" element={<EditCampus />} /> */}
+        <Route path="/campuses/edit/:campusId" element={<EditCampus />} />
 
         <Route path="/students" element={<AllStudents />} />
         {/* <Route path="/students/show" element={<ShowStudent />} /> */}

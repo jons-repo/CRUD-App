@@ -56,7 +56,7 @@ const EditStudent = () => {
     return (
         <center>
             <div>
-                <h2>Edit Student Page</h2>
+                <h1 class="centered">Edit Student Page</h1>
                 <StudentForm initialValues={initialFormValues} handleFormSubmit={handleFormSubmit} />
             </div>
         </center>

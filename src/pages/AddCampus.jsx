@@ -11,11 +11,11 @@ const AddCampus = () => {
 
   return (
     <center>
-            <div>
-            <h1 class="centered">Add Campus Page</h1>
-            <CampusForm handleFormSubmit={handleFormSubmit}/>
-            </div>
-        </center>
+      <div>
+        <h1 class="centered">Add Campus Page</h1>
+        <CampusForm handleFormSubmit={handleFormSubmit} />
+      </div>
+    </center>
   )
 }
 

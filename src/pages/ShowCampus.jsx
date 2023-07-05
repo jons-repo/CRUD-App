@@ -3,69 +3,64 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { deleteStudentThunk } from '../redux/student/student.actions';
+import ListStudents from "../components/studentListing";
 
 import { fetchAllCampusesThunk } from "../redux/campus/campus.actions";
 const ShowCampus = () => {
-    const { studentId } = useParams();
-    const allStudents = useSelector((state) => state.student.allStudents);
-    //const allCampuses = useSelector((state) => state.campus.allCampuses);
+    const { campusId } = useParams();
+    // const allStudents = useSelector((state) => state.student.allCampuses);
+    const allCampuses = useSelector((state) => state.campus.allCampuses);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     // State for all variables of a student
     const [initialFormValues, setInitialFormValues] = useState({
         id: '',
-        firstName: '',
-        lastName: '',
-        email: '',
+        name: '',
         imageUrl: '',
-        gpa: 0.0,
-        campusId: 0,
-        campus: ''
+        address: '',
+        description: ''
     });
 
     // On mount, fetch data and set initial values
     useEffect(() => {
         // Find student with right id
-        const student = allStudents.find((student) => student.id === parseInt(studentId));
-        if (student) {
+        const campus = allCampuses.find((student) => student.id === parseInt(campusId));
+        if (campus) {
             setInitialFormValues({
-                id: student.id,
-                firstName: student.firstName,
-                lastName: student.lastName,
-                email: student.email,
-                imageUrl: student.imageUrl,
-                gpa: student.gpa,
-                campusId: student.campusId,
-                campus: student.campus.name
+                id: campus.id,
+                name: campus.name,
+                imageUrl: campus.imageUrl,
+                address: campus.address,
+                description: campus.description
             });
         }
-    }, [allStudents, studentId]);
+    }, [allCampuses, campusId]);
 
     const handleViewCampusClick = () => {
-        navigate(`/view-campus/${initialFormValues.campusId}`);
-      }
-    
-      const handleEditClick = () => {
-        navigate(`/edit-student/${initialFormValues.id}`);
-      };
-    
-      const handleDeleteClick = () => {
-        dispatch(deleteStudentThunk(initialFormValues.id))
-        .then(() => {
-                navigate('/students');
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-      };
+        // navigate(`/view-campus/${initialFormValues.campusId}`);
+    }
+
+    const handleEditClick = () => {
+        // navigate(`/edit-campuse/${initialFormValues.id}`);
+    };
+
+    const handleDeleteClick = () => {
+        // dispatch(deleteStudentThunk(initialFormValues.id))
+        // .then(() => {
+        //         navigate('/students');
+        //     })
+        //     .catch((error) => {
+        //         console.log(error);
+        //     });
+    };
 
 
     return (
 
         <center>
             <div>
-                <h1 class="centered"></h1>
+                <h1 class="centered">View Campus</h1>
                 <div className="card" style={{ width: '40rem' }}>
                     <div >
                         <img
@@ -75,15 +70,12 @@ const ShowCampus = () => {
                         />
                         <div className="card-body">
                             <h5 className="card-title">
-                                Student Details
+                                Campus Details
                             </h5>
-                            <p class="leftCentered">Student ID: {initialFormValues.id}</p>
-                            <p class="leftCentered">First Name: {initialFormValues.firstName}</p>
-                            <p class="leftCentered">Last Name:  {initialFormValues.lastName}</p>
-                            <p class="leftCentered">Email: {initialFormValues.email}</p>
-                            <p class="leftCentered">GPA: {initialFormValues.gpa}</p>
-                            <p class="leftCentered">Campus ID: {initialFormValues.campusId}</p>
-                            <p class="leftCentered">Campus: {initialFormValues.campus}</p>
+                            <p class="leftCentered">Campus ID: {initialFormValues.id}</p>
+                            <p class="leftCentered">Campus Name: {initialFormValues.name}</p>
+                            <p class="leftCentered">Campus Address:  {initialFormValues.address}</p>
+                            <p class="leftCentered">Campus Description: {initialFormValues.description}</p>
                         </div>
                     </div>
 
@@ -95,10 +87,11 @@ const ShowCampus = () => {
                         <button className="card-link" onClick={() => handleDeleteClick(initialFormValues.id)}>
                             Delete
                         </button>
-                        <button className="card-link" onClick={() => handleViewCampusClick(initialFormValues.campusId)}>
-                            View Campus
-                        </button>
                     </div>
+                </div>
+                <h1 class="centered">Students</h1>
+                <div class="cards">
+                    <ListStudents list={[]} />
                 </div>
 
 

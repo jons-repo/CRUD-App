@@ -37,7 +37,7 @@ const ShowStudent = () => {
                 imageUrl: student.imageUrl,
                 gpa: student.gpa,
                 campusId: student.campusId,
-                campus: student.campus.name
+                campus: student.campus ? student.campus.name : "no campus selected",
             });
         }
     }, [allStudents, studentId]);

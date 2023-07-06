@@ -31,8 +31,9 @@ export const addCampus = (payload) => {
 export const addCampusThunk = (campusData) => {
     return async (dispatch) => {
         try {
-            await axios.post("http://localhost:8000/api/campuses/addCampus", campusData);
+            const response = await axios.post("http://localhost:8000/api/campuses/addCampus", campusData);
             dispatch(addCampus(campusData));
+            return response.data;
         } catch (error) {
             console.error(error);
         }

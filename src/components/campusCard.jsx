@@ -7,6 +7,7 @@ const CampusCard = ({ campusCard }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  //handle events
   const handleViewClick = () => {
     navigate(`/view-campus/${campusCard.id}`);
   }

@@ -2,7 +2,7 @@ import React from 'react';
 import StudentCard from './studentCard';
 
 const ListStudents = (props) => {
-    
+    //check list empty if not load data using studentCard
     return props.list && props.list.length > 0 ? (
       props.list.map((studentCard) => {
         console.log(studentCard);

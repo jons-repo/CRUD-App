@@ -12,8 +12,8 @@ const StudentForm = ({ handleFormSubmit, initialValues }) => {
     const [email, setEmail] = useState("");
     const [imageUrl, setImageUrl] = useState("");
     const [gpa, setGpa] = useState(0.0);
-    const [campusId, setCampusID] = useState(0);
-    const [emailError, setEmailError] = useState('');
+    const [campusId, setCampusID] = useState(null);
+    const [emailError, setEmailError] = useState(null);
 
     //validate Email
     const validateEmail = (input) => {
@@ -65,6 +65,14 @@ const StudentForm = ({ handleFormSubmit, initialValues }) => {
         setCampusID(event.target.value);
     };
 
+    //if u want the blur instead of db showing error message for
+    // const handleGpaBlur = (event) => {
+    //     let updatedGpa = parseFloat(event.target.value);
+    //     if(updatedGpa > 4.0) {
+    //         updatedGpa = 4.0;
+    //     }
+    //     setGpa(updatedGpa);
+    // };
     const handleSubmitChange = (event) => {
         event.preventDefault();
 
@@ -118,7 +126,8 @@ const StudentForm = ({ handleFormSubmit, initialValues }) => {
                 <div class="formInput">
                     <label htmlFor="email">Email </label>
                     <div>
-                        <input type="text" placeholder="fake@gmail.com" id="email" value={email} onChange={handleEmailChange} /> {emailError}
+                        <input type="text" placeholder="fake@gmail.com" id="email" value={email} onChange={handleEmailChange} />
+                        {emailError ? <br/> : null} {emailError}
                     </div>
                 </div>
                 <div class="formInput">
@@ -131,7 +140,7 @@ const StudentForm = ({ handleFormSubmit, initialValues }) => {
                 <div class="formInput">
                     <label htmlFor="gpa">GPA </label>
                     <div>
-                        <input type="number" step="0.1" id="gpa" value={gpa} onChange={handleGpaChange} />
+                        <input type="number" step="0.1" id="gpa" value={gpa} max = "4.0" onChange={handleGpaChange} />
                     </div>
                 </div>
                 <div class="formInput">

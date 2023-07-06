@@ -65,6 +65,13 @@ const StudentForm = ({ handleFormSubmit, initialValues }) => {
         setCampusID(event.target.value);
     };
 
+    const handleGpaBlur = (event) => {
+        let updatedGpa = parseFloat(event.target.value);
+        if(updatedGpa > 4.0) {
+            updatedGpa = 4.0;
+        }
+        setGpa(updatedGpa);
+    };
     const handleSubmitChange = (event) => {
         event.preventDefault();
 
@@ -132,7 +139,7 @@ const StudentForm = ({ handleFormSubmit, initialValues }) => {
                 <div class="formInput">
                     <label htmlFor="gpa">GPA </label>
                     <div>
-                        <input type="number" step="0.1" id="gpa" value={gpa} onChange={handleGpaChange} />
+                        <input type="number" step="0.1" id="gpa" value={gpa} max = "4.0" onChange={handleGpaChange} />
                     </div>
                 </div>
                 <div class="formInput">

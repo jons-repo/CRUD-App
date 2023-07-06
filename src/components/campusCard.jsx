@@ -36,7 +36,7 @@ const CampusCard = ({ campusCard }) => {
           />
           <div className="card-body">
             <h5 className="card-title">{campusCard.name}</h5>
-            <p className="card-text">Total Students: {campusCard.students.length}</p>
+            <p className="card-text">Total Students: {campusCard.students ? campusCard.students.length : 0}</p>
           </div>
         </div>
         <div className="card-body">

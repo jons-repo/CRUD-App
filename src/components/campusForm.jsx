@@ -5,11 +5,14 @@ import { addCampus, updateCampus } from '../redux/campus/campus.actions';
 const CampusForm = ({ handleFormSubmit, initialValues }) => {
     const dispatch = useDispatch();
 
+    //Initialize variables useStates
     const [name, setName] = useState('');
     const [imageUrl, setImageUrl] = useState('');
     const [address, setAddress] = useState('');
     const [description, setDescription] = useState('');
+    const [nameError, setNameError] = useState(null);
 
+    // Set initial form values if the campusForm is used in EditCampus page
     useEffect(() => {
         if (initialValues) {
             setName(initialValues.name);
@@ -35,9 +38,17 @@ const CampusForm = ({ handleFormSubmit, initialValues }) => {
         setDescription(event.target.value);
     };
 
+    //handle submit 
     const handleSubmit = (event) => {
         event.preventDefault();
 
+        //error messages
+        if (name === "") {
+            setNameError("Please enter campus name.")
+            return
+        }
+        //-----------------
+        //set up data/json
         const campusData = {
             name,
             imageUrl,
@@ -90,6 +101,7 @@ const CampusForm = ({ handleFormSubmit, initialValues }) => {
                             value={name}
                             onChange={handleNameChange}
                         />
+                        {nameError ? <br /> : null} {nameError}
                     </div>
                 </div>
                 <div className="formInput">

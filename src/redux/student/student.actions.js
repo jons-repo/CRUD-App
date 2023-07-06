@@ -30,8 +30,9 @@ export const addStudent = (payload) => {
 export const addStudentThunk = (studentData) => {
     return async (dispatch) => {
         try {
-            await axios.post("http://localhost:8000/api/students/addStudent", studentData);
-            dispatch(addStudent(studentData));
+            const response = await axios.post("http://localhost:8000/api/students/addStudent", studentData);
+            dispatch(addStudent(response.data));
+            return response.data;
         } catch (error) {
             console.error(error);
         }

@@ -2,7 +2,7 @@ import React from 'react';
 import CampusCard from './campusCard';
 
 const ListCampuses = (props) => {
-    console.log("at the propslist", props.list);
+    //check list empty if not load data using studentCard  
     return props.list && props.list.length > 0 ? (
       props.list.map((campusCard) => {
         console.log(campusCard);

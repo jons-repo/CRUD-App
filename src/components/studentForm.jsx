@@ -6,7 +6,7 @@ const StudentForm = ({ handleFormSubmit, initialValues }) => {
     const allCampuses = useSelector((state) => state.campus.allCampuses);
     const dispatch = useDispatch();
 
-    //Initialize useStates
+    //Initialize variables useStates
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
@@ -14,6 +14,8 @@ const StudentForm = ({ handleFormSubmit, initialValues }) => {
     const [gpa, setGpa] = useState(0.0);
     const [campusId, setCampusID] = useState(null);
     const [emailError, setEmailError] = useState(null);
+    const [firstNameError, setFirstNameError] = useState(null);
+    const [lastNameError, setLastNameError] = useState(null);
 
     //validate Email
     const validateEmail = (input) => {
@@ -22,6 +24,7 @@ const StudentForm = ({ handleFormSubmit, initialValues }) => {
         return emailRegex.test(input);
     }
 
+    //get campuses data
     const fetchAllCampuses = () => {
         return dispatch(fetchAllCampusesThunk());
     }
@@ -29,7 +32,7 @@ const StudentForm = ({ handleFormSubmit, initialValues }) => {
         fetchAllCampuses();
     }, [])
 
-    // Set initial form values
+    // Set initial form values if the studentForm is used in EditStudent page
     useEffect(() => {
         if (initialValues) {
             setFirstName(initialValues.firstName);
@@ -41,6 +44,7 @@ const StudentForm = ({ handleFormSubmit, initialValues }) => {
         }
     }, [initialValues]);
 
+    //handle variable/state changes
     const handleFirstNameChange = (event) => {
         setFirstName(event.target.value);
     };
@@ -73,14 +77,26 @@ const StudentForm = ({ handleFormSubmit, initialValues }) => {
     //     }
     //     setGpa(updatedGpa);
     // };
-    const handleSubmitChange = (event) => {
+
+    //handling submit 
+    const handleSubmitChange = async (event) => {
         event.preventDefault();
 
+        //error messages
         if (!validateEmail(email)) {
             setEmailError("Please enter a valid email address.");
             return;
         }
 
+        if(firstName === "") {
+            setFirstNameError("Please enter your First Name.");
+        }
+
+        if(lastName === "") {
+            setLastNameError("Please enter your Last Name.");
+        }
+        //------------------------
+        //set up data/json 
         const studentData = {
             firstName,
             lastName,
@@ -91,8 +107,9 @@ const StudentForm = ({ handleFormSubmit, initialValues }) => {
             ...(initialValues ? { id: initialValues.id } : {}) // object spread syntax to include id only when edit data
         };
         console.log(studentData);
-        handleFormSubmit(studentData);
+        await handleFormSubmit(studentData);
 
+        //reset state
         setFirstName("");
         setLastName("");
         setEmail("");
@@ -115,12 +132,14 @@ const StudentForm = ({ handleFormSubmit, initialValues }) => {
                     <label htmlFor="firstName" >First Name </label>
                     <div>
                         <input type="text" placeholder="FirstName" id="firstName" value={firstName} onChange={handleFirstNameChange} />
+                        {firstNameError ? <br/> : null} {firstNameError}
                     </div>
                 </div>
                 <div class="formInput">
                     <label htmlFor="lastName">Last Name </label>
                     <div>
                         <input type="text" placeholder="LastName" id="lastName" value={lastName} onChange={handleLastNameChange} />
+                        {lastNameError ? <br/> : null} {lastNameError}
                     </div>
                 </div>
                 <div class="formInput">
@@ -148,6 +167,7 @@ const StudentForm = ({ handleFormSubmit, initialValues }) => {
                     <div>
                         <select id="campusId" value={campusId} onChange={handleCampusIdChange}>
                             <option value="">Select Campus</option>
+                            {/* get all campuses data esp names so that student can choose*/}
                             {allCampuses
                                 ? allCampuses.map((campus) => { return (<option key={campus.id} value={campus.id}>{campus.name}</option>) })
                                 : "error getting data"};

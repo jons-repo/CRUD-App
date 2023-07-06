@@ -1,31 +1,56 @@
-import React from 'react'
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { deleteCampusThunk } from '../redux/campus/campus.actions';
 
 const CampusCard = ({ campusCard }) => {
-  console.log(campusCard)
-  return (
-    <div class="button">
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-      <div className="card" style={{ width: "25rem" }}>
-        <div class="cardButton">
-          <img src="https://img.freepik.com/free-vector/college-building-educational-institution-banner_1441-3616.jpg?size=626&ext=jpg" className="card-img-top" alt="..." />
+  const handleViewClick = () => {
+    navigate(`/view-campus/${campusCard.id}`);
+  }
+
+  const handleEditClick = () => {
+    navigate(`/campuses/edit/${campusCard.id}`);
+  };
+
+  const handleDeleteClick = () => {
+    dispatch(deleteCampusThunk(campusCard.id))
+      .then(() => {
+        navigate('/campuses');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  return (
+    <div>
+      <div className="card" style={{ width: '25rem' }}>
+        <div className="cardButton" onClick={() => handleViewClick(campusCard.id)}>
+          <img
+            src="https://img.freepik.com/free-vector/college-building-educational-institution-banner_1441-3616.jpg?size=626&ext=jpg"
+            className="card-img-top"
+            alt="..."
+          />
           <div className="card-body">
             <h5 className="card-title">{campusCard.name}</h5>
             <p className="card-text">Total Students: {campusCard.students.length}</p>
           </div>
         </div>
-
         <div className="card-body">
-          <button className="card-link">
+          <button onClick={handleEditClick} className="card-link">
             Edit
           </button>
-          <button className="card-link">
+          <button onClick={handleDeleteClick} className="card-link">
             Delete
           </button>
         </div>
       </div>
+
     </div>
   );
-
-}
+};
 
 export default CampusCard;

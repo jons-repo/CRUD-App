@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { fetchAllCampusesThunk } from "../redux/campus/campus.actions";
-const StudentForm = ({ handleFormSubmit, initialValues}) => {
+const StudentForm = ({ handleFormSubmit, initialValues }) => {
     const allCampuses = useSelector((state) => state.campus.allCampuses);
     const dispatch = useDispatch();
 
@@ -68,7 +68,7 @@ const StudentForm = ({ handleFormSubmit, initialValues}) => {
     const handleSubmitChange = (event) => {
         event.preventDefault();
 
-        if(!validateEmail(email)){
+        if (!validateEmail(email)) {
             setEmailError("Please enter a valid email address.");
             return;
         }
@@ -80,7 +80,7 @@ const StudentForm = ({ handleFormSubmit, initialValues}) => {
             imageUrl,
             gpa,
             campusId,
-            ...(initialValues ? {id : initialValues.id} : {}) // object spread syntax to include id only when edit data
+            ...(initialValues ? { id: initialValues.id } : {}) // object spread syntax to include id only when edit data
         };
         console.log(studentData);
         handleFormSubmit(studentData);
@@ -98,7 +98,7 @@ const StudentForm = ({ handleFormSubmit, initialValues}) => {
 
         <div>
             <br></br>
-            <form className="form-group" style={{ backgroundColor: "#e3f2fd", display: "inline-block", padding:" 1rem 2rem", borderRadius: "10px"}} onSubmit={handleSubmitChange}>
+            <form className="form-group" style={{ backgroundColor: "#e3f2fd", display: "inline-block", padding: " 1rem 2rem", borderRadius: "10px" }} onSubmit={handleSubmitChange}>
 
                 <center><legend><h3><b>Student Registration Form</b></h3></legend></center><br />
 
@@ -139,11 +139,11 @@ const StudentForm = ({ handleFormSubmit, initialValues}) => {
                     <label htmlFor="campus id">Campus </label>
                     <div>
                         <select id="campusId" value={campusId} onChange={handleCampusIdChange}>
-                        <option value = "">Select Campus</option>
-                        {allCampuses 
-                        ? allCampuses.map((campus) => {return(<option key={campus.id} value={campus.id}>{campus.name}</option>)})
-                        : "error getting data"};
-                        </select>                        
+                            <option value="">Select Campus</option>
+                            {allCampuses
+                                ? allCampuses.map((campus) => { return (<option key={campus.id} value={campus.id}>{campus.name}</option>) })
+                                : "error getting data"};
+                        </select>
                     </div>
 
                 </div>

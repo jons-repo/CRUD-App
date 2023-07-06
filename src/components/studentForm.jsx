@@ -65,13 +65,14 @@ const StudentForm = ({ handleFormSubmit, initialValues }) => {
         setCampusID(event.target.value);
     };
 
-    const handleGpaBlur = (event) => {
-        let updatedGpa = parseFloat(event.target.value);
-        if(updatedGpa > 4.0) {
-            updatedGpa = 4.0;
-        }
-        setGpa(updatedGpa);
-    };
+    //if u want the blur instead of db showing error message for
+    // const handleGpaBlur = (event) => {
+    //     let updatedGpa = parseFloat(event.target.value);
+    //     if(updatedGpa > 4.0) {
+    //         updatedGpa = 4.0;
+    //     }
+    //     setGpa(updatedGpa);
+    // };
     const handleSubmitChange = (event) => {
         event.preventDefault();
 

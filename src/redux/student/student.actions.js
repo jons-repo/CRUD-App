@@ -12,7 +12,7 @@ export const fetchAllStudents = (payload) => {
 export const fetchAllStudentsThunk = () => {
     return async (dispatch) => {
         try {
-            const response = await axios.get("http://localhost:8000/api/students");
+            const response = await axios.get("https://crud-app-backend-da6d46bdx-jons-repo.vercel.app/api/students");
             dispatch(fetchAllStudents(response.data));
         } catch (error) {
             console.error(error);
@@ -30,7 +30,7 @@ export const addStudent = (payload) => {
 export const addStudentThunk = (studentData) => {
     return async (dispatch) => {
         try {
-            const response = await axios.post("http://localhost:8000/api/students/addStudent", studentData);
+            const response = await axios.post("https://crud-app-backend-da6d46bdx-jons-repo.vercel.app/api/students/addStudent", studentData);
             dispatch(addStudent(response.data));
             return response.data;
         } catch (error) {
@@ -51,7 +51,7 @@ export const updateStudentThunk = (updatedStudentData) => {
         try {
             console.log(updatedStudentData.id);
             await axios.put(
-                `http://localhost:8000/api/students/${updatedStudentData.id}`,
+                `https://crud-app-backend-da6d46bdx-jons-repo.vercel.app/api/students/${updatedStudentData.id}`,
                 updatedStudentData
             );
             dispatch(updateStudent(updatedStudentData));
@@ -72,7 +72,7 @@ export const deleteStudent = (payload) => {
 export const deleteStudentThunk = (studentId) => {
     return async (dispatch) => {
         try {
-            await axios.delete(`http://localhost:8000/api/students/${studentId}`);
+            await axios.delete(`https://crud-app-backend-da6d46bdx-jons-repo.vercel.app/api/students/${studentId}`);
             dispatch(deleteStudent(studentId));
         } catch (error) {
             console.error(error);

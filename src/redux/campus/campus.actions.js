@@ -13,7 +13,7 @@ export const fetchAllCampuses = (payload) => {
 export const fetchAllCampusesThunk = () => {
     return async (dispatch) => {
         try {
-            const response = await axios.get("http://localhost:8000/api/campuses");
+            const response = await axios.get("https://crud-app-backend-da6d46bdx-jons-repo.vercel.app/api/campuses");
             dispatch(fetchAllCampuses(response.data));
         } catch (error) {
             console.error(error);
@@ -31,7 +31,7 @@ export const addCampus = (payload) => {
 export const addCampusThunk = (campusData) => {
     return async (dispatch) => {
         try {
-            const response = await axios.post("http://localhost:8000/api/campuses/addCampus", campusData);
+            const response = await axios.post("https://crud-app-backend-da6d46bdx-jons-repo.vercel.app/api/campuses/addCampus", campusData);
             dispatch(addCampus(campusData));
             return response.data;
         } catch (error) {
@@ -50,7 +50,7 @@ export const updateCampus = (payload) => {
 export const updateCampusThunk = (campusData) => {
     return async (dispatch) => {
         try {
-            await axios.put(`http://localhost:8000/api/campuses/${campusData.id}`, campusData);
+            await axios.put(`https://crud-app-backend-da6d46bdx-jons-repo.vercel.app/api/campuses/${campusData.id}`, campusData);
             dispatch(updateCampus(campusData));
         } catch (error) {
             console.error(error);
@@ -68,7 +68,7 @@ export const deleteCampus = (payload) => {
 export const deleteCampusThunk = (campusId) => {
     return async (dispatch) => {
         try {
-            await axios.delete(`http://localhost:8000/api/campuses/${campusId}`);
+            await axios.delete(`https://crud-app-backend-da6d46bdx-jons-repo.vercel.app/api/campuses/${campusId}`);
             dispatch(deleteCampus(campusId));
         } catch (error) {
             console.error(error);
